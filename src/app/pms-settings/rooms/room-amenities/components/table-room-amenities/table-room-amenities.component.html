@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Room Amenities</h3>
+      <hr>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <form>
+            <mat-form-field>
+              <input 
+              matInput 
+              placeholder="Search" 
+              class="custom-field"
+              (keyup)="onSearch(filter.value)"
+              #filter
+              >
+            </mat-form-field>
+        </form>
+      </div>
+      <div class="col-xs-3 pull-right" id="showHideColumns">
+        <button
+         mat-raised-button 
+        (click)="openColumnList()">
+        SHOW / HIDE COLUMNS
+      </button>
+      
+
+      <mat-selection-list
+      [@showList]="isVisibleColumnList">
+          <mat-list-option
+          *ngFor="let column of getEditableColumns()"
+          (click)="toggleColumn(column.propertyName, chbColumn.selected)"
+          #chbColumn
+          [selected]="displayedColumns.includes(column.propertyName)">
+            {{column.title}}
+          </mat-list-option>
+      </mat-selection-list>
+      </div>
+    </div>
+  
+
+  <mat-table 
+  [dataSource]="dataSource"
+  class="mat-elevation-z8"
+  matSort
+  [matSortDisableClear]="true">
+
+    <ng-container 
+    *ngFor="let column of columns" 
+    [matColumnDef]="column.propertyName">
+
+         <!--TH--> 
+         <mat-header-cell 
+         *matHeaderCellDef
+         mat-sort-header 
+         [disabled]="isFixedColumn(column.propertyName)">
+              {{column.title}}
+         </mat-header-cell>
+
+         <!--TD-->
+         <mat-cell
+         *matCellDef="let row">
+         <!--value columns => text -->
+            <ng-container
+             *ngIf="!isFixedColumn(column.propertyName)">
+
+             <span 
+             *ngIf="row[column.propertyName]===true">
+                <mat-icon>check</mat-icon>
+             </span>
+
+             <span 
+             *ngIf="row[column.propertyName]===false">
+                <mat-icon>close</mat-icon>
+             </span>
+
+             <span *ngIf="row[column.propertyName] !== true && row[column.propertyName] !==false && column.propertyName=='title'">
+               <button 
+               mat-button
+               
+               >
+               <!--uraditi clikc za edit-->
+                  {{row[column.propertyName]}}
+               </button>                                 
+             </span>
+
+             <span *ngIf="row[column.propertyName] !== true && row[column.propertyName] !==false && column.propertyName!='title'">                   
+                  {{row[column.propertyName]}}                    
+            </span>
+            </ng-container>              
+             <!--value columns => checkboxes -->
+            <ng-container 
+            *ngIf="column.propertyName == 'select'">
+              <mat-checkbox 
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selectedRows.toggle(row) : null"
+              [checked]="selectedRows.isSelected(row)">
+              </mat-checkbox>
+            </ng-container>
+         </mat-cell>
+    </ng-container>
+
+    <mat-header-row 
+    *matHeaderRowDef="displayedColumns">
+    </mat-header-row>
+    <mat-row 
+    *matRowDef="let row; columns: displayedColumns;"
+    (click)="selectedRows.toggle(row)">
+    </mat-row>
+  </mat-table>
+  <!--paginatort-->
+  <mat-paginator
+  [pageSizeOptions]="pageSizeOptions">
+
+  </mat-paginator>
+
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <button mat-raised-button (click)="openAddDialog()" class="customBtn">Add</button>
+      <button mat-raised-button (click)="onGroupDelete()" class="customBtn">Delete</button>
+      <button mat-raised-button (click)="goBack()" class="customBtn">Close</button>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>

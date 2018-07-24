@@ -1,0 +1,353 @@
+[
+    {
+        "name" : "Rooms",
+        "children": [
+            {
+                "name": "Room Amenities",
+                "path" : "rooms/room-amenities"
+            },
+            {
+                "name": "Room Classes",
+                "path" : "rooms/room-classes"
+            },
+            {
+                "name": "Room Types",
+                "path" : ""
+            },
+            {
+                "name" : "Order Room Types",
+                "path": ""
+            },
+            {
+                "name" : "Rooms",
+                "path": ""
+            },
+            {
+                "name" : "Order Rooms",
+                "path": ""
+            },
+            {
+                "name" : "Room Availability Periods",
+                "path": "rooms/room-availability-periods"
+            },
+            {
+                "name" : "Published Rooms",
+                "path": ""
+            },
+            {
+                "name": "Tape Chart",
+                "path": ""
+            }
+        ]
+    },
+    {
+        "name" : "Rates",
+        "children": [
+            {
+                "name" : "Rate Manager",
+                "path" : ""
+            },
+            {
+                "name" : "Rent Add-ons",
+                "path" : ""
+            },
+            {
+                "name" : "Rate Priority",
+                "path" : ""
+            },
+            {
+                "name" : "Taxes",
+                "path" : ""
+            },
+            {
+                "name" : "Yield Management Rules",
+                "path" : ""
+            },
+            {
+                "name" : "Yield Management Settings",
+                "path" : ""
+            },
+            {
+                "name" : "Stay Restrictions",
+                "path" : ""
+            },
+            {
+                "name" : "Booking Windows",
+                "path" : ""
+            },
+            {
+                "name" : "Rate Policies",
+                "path" : ""
+            }
+        ]
+    },
+    {
+        "name" : "POS",
+        "children" : [
+            {
+                "name" : "Pos Points",
+                "path": ""
+            },
+            {
+                "name" : "Categories",
+                "path": ""
+            },
+            {
+                "name" : "Products",
+                "path": ""
+            }
+        ]
+    },
+    {
+        "name" : "Property Info",
+        "children" : [
+            {
+                "name" : "Floors",
+                "path" : ""
+            },
+            {
+                "name" : "Time Zone",
+                "path" : ""
+            },
+            {
+                "name" : "Default Guest Settings",
+                "path" : ""
+            },
+            {
+                "name" : "Logo Upload",
+                "path" : ""
+            }
+        ]
+    },
+    {
+        "name" : "Users",
+        "children" : [
+            {
+                "name" : "User Levels",
+                "path" : ""
+            },
+            {
+                "name" : "Users",
+                "path" : ""
+            },
+            {
+                "name" : "Shifts",
+                "path" : ""
+            }
+        ]
+    },
+    {
+        "name" : "General",
+        "children" : [
+            {
+                "name" : "Guest Messages",
+                "path" : ""
+            },
+            {
+                "name" : "Automated Emails",
+                "path" : ""
+            },
+            {
+                "name" : "Email Templates",
+                "path" : ""
+            },
+            {
+                "name" : "Email Rules",
+                "path" : ""
+            },
+            {
+                "name" : "Languages",
+                "path" : ""
+            },
+            {
+                "name" : "Modes of Arrival",
+                "path" : ""
+            },
+            {
+                "name" : "Identification Types",
+                "path" : ""
+            },
+            {
+                "name" : "Sources of Business",
+                "path" : ""
+            },
+            {
+                "name" : "Markets",
+                "path" : ""
+            },
+            {
+                "name" : "Display Colors",
+                "path" : ""
+            },
+            {
+                "name" : "Guest Information: Custom Fields",
+                "path" : ""
+            },
+            {
+                "name" : "Alerts",
+                "path" : ""
+            },
+            {
+                "name" : "Reservation Information: Custom Fields",
+                "path" : ""
+            }
+        ]
+    },
+    {
+        "name" : "IBE",
+        "children" : [
+            {
+                "name": "Promo Code List",
+                "path": ""
+            },
+            {
+                "name": "Guest Requests",
+                "path": ""
+            },
+            {
+                "name": "Confirmation Type",
+                "path": ""
+            },
+            {
+                "name": "Assign Room Logic",
+                "path": ""
+            },
+            {
+                "name": "Advanced Booking Period",
+                "path": ""
+            },
+            {
+                "name": "Upsell Items",
+                "path": ""
+            },
+            {
+                "name": "Advanced Options",
+                "path": ""
+            },
+            {
+                "name": "Payment Collection Rules",
+                "path": ""
+            }
+        ]
+    },
+    {
+        "name" : "Accounting",
+        "children" : [
+            {
+                "name": "Currency",
+                "path": ""
+            },
+            {
+                "name": "Fiscal Year",
+                "path": ""
+            },
+            {
+                "name": "Pay Types",
+                "path": ""
+            },
+            {
+                "name": "Credit Card Types",
+                "path": ""
+            },
+            {
+                "name": "Payment Processing",
+                "path": ""
+            },
+            {
+                "name": "Credit Card Purge",
+                "path": ""
+            },
+            {
+                "name": "Invoices",
+                "path": ""
+            },
+            {
+                "name": "Adjustment Reason List",
+                "path": ""
+            },
+            {
+                "name": "Revenue Account Labels",
+                "path": ""
+            },
+            {
+                "name": "Revenue Account Manager",
+                "path": ""
+            },
+            {
+                "name": "Revenue Account Categories",
+                "path": ""
+            },
+            {
+                "name": "Revenue Account Rules",
+                "path": ""
+            },
+            {
+                "name": "Night Audit Settings",
+                "path": ""
+            },
+            {
+                "name": "Discount Reasons: Department Options",
+                "path": ""
+            },
+            {
+                "name": "",
+                "path": ""
+            }
+        ]
+    },
+    {
+        "name" : "Integrations",
+        "children" : [
+            {
+                "name": "OTA / GDS Mapping",
+                "path": ""
+            },
+            {
+                "name": "OTA Room Assignment",
+                "path": ""
+            },
+            {
+                "name": "Integration Configuration",
+                "path": ""
+            }
+        ]
+    },
+    {
+        "name" : "Housekeeping",
+        "children" : [
+            {
+                "name": "Housekeeping Statuses",
+                "path": ""
+            },
+            {
+                "name": "Housekeeping Rules",
+                "path": ""
+            }
+        ]
+    },
+    {
+        "name" : "Back Office",
+        "children" : [
+            {
+                "name": "Back Office Config",
+                "path": ""
+            },
+            {
+                "name": "Export Columns Configuration",
+                "path": ""
+            },
+            {
+                "name": "Accounting Codes Configuration",
+                "path": ""
+            },
+            {
+                "name": "Daily Statistics",
+                "path": ""
+            },
+            {
+                "name": "Re-Trigger Exports",
+                "path": ""
+            }
+        ]
+    }
+]

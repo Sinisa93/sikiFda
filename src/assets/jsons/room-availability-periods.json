@@ -1,0 +1,42 @@
+[
+    {
+        "id":1,
+        "title":"Holiday 1",
+        "start": "2018-07-11",
+        "end": "-",
+        "repeat":true,
+        "status":true
+    },
+    {
+        "id":2,
+        "title":"Room rent",
+        "start": "2018-07-16",
+        "end": "2018-07-23",
+        "repeat":true,
+        "status":false
+    },
+    {
+        "id":3,
+        "title":"Room busy",
+        "start": "2018-07-05",
+        "end": "-",
+        "repeat":false,
+        "status":true
+    },
+    {
+        "id":4,
+        "title":"Room rented",
+        "start": "2018-07-12",
+        "end": "2018-07-20",
+        "repeat":true,
+        "status":true
+    },
+    {
+        "id":5,
+        "title":"Dirty room",
+        "start": "2018-07-15",
+        "end": "2018-07-19",
+        "repeat":false,
+        "status":false
+    }
+]

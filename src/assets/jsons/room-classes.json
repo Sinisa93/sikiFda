@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "title": "Hotel",
+        "status" : true
+    },
+    {
+        "id" : 2,
+        "title" : "Mission st",
+        "status" : false
+    },
+    {
+        "id" : 3,
+        "title" : "Class 3",
+        "status" : true
+    }
+]

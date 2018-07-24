@@ -1,0 +1,22 @@
+mat-table {
+    margin: 30px 0px;
+}
+#showHideColumns {
+    position: relative;
+}
+mat-selection-list {
+    position: absolute;
+    padding: 20px;
+    border: 1px solid #ccc;
+    right: 0;
+    z-index: 999;
+    background: #fff;
+}
+.custom-field {
+    caret-color: #0ab0d1;
+    font-size:17px;
+}
+.customBtn{    
+    margin:5px;
+    margin-bottom: 70px;
+}

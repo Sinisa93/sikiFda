@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3><a routerLink="/pms-settings">Control Panel</a> / Room Amenities - Add/Edit</h3>
+        <hr>
+      </div>
+    </div>
+</div>
+
+<form [formGroup]="formRoomAmenities" >
+  <mat-dialog-content>
+  <mat-form-field>
+    <input
+    matInput
+    formControlName="txtTitle"
+    placeholder="Title"
+    />
+    <mat-error *ngIf="formRoomAmenities.get('txtTitle').hasError('required')">
+      <span style='color:red'>
+        Title is required!
+      </span>
+    </mat-error>
+  </mat-form-field><br/>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+    matInput
+    cdkTextareaAutosize
+    cdkAutosizeMinRows="2"
+    cdkAutosizeMaxRows="5"
+    formControlName="taDescription">
+    </textarea>
+  </mat-form-field><br/>
+  <mat-checkbox
+  matInput
+  formControlName="cbStatus"
+  [labelPosition]="labelPosition">
+    Status
+  </mat-checkbox><br/>
+  <input formControlName="id" type="hidden"/><br><br>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+      <div class="button-row">
+          <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" >Save</button>
+          <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Close</button>
+          
+      </div>
+  </mat-dialog-actions>
+</form>

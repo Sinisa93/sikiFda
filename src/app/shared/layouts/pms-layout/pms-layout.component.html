@@ -1,0 +1,70 @@
+<nav id="app-nav" class="navbar navbar-inverse navbar-static-top header" role="navigation">
+    <div class="navbar-header header-logo">
+       <!--  <a href="index.php"><img src="https://zone1.frontdeskanywhere.net/FDA/webresources/images/FDA_Logo_Small.png" alt="Frontdesk Anywhere" border=0 draggable="false" /></a> -->
+       <a href="https://zone1.frontdeskanywhere.net/FDA/usere/frontdesk.php"><div></div></a>
+    </div>
+    <div class="nav navbar-nav pull-right header-menu">
+        <div class="navbar-text">
+            <span id="day" value="1">Monday</span>,
+            <span id="month" value="07">July</span>
+            <span id="date" value="23">23,</span>
+            <span id="year" value="2018">2018</span>
+        </div>
+        <div class="navbar-text">Daily Shift</div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="https://zone1.frontdeskanywhere.net/FDA/admine/#" >
+                    <span class="announcement">0</span>
+                </a>
+            </li>
+            <li class="dropdown">
+               <!--  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Milan Skoro<b class="caret"></b></a> -->
+                <a href="https://zone1.frontdeskanywhere.net/FDA/admine/#" data-toggle="dropdown" class="dropdown-toggle">Milan Skoro<span class="fda-caret icon icon-expand-more"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a id="zen_link" href="javascript:void(0);" target="_blank">Support</a></li>
+                    <li><a id="doc_link" href="http://docs.frontdeskanywhere.net/3_5_47_1" target="_blank">Documentation</a></li>
+                    <li><a href="https://zone1.frontdeskanywhere.net/FDA/usere/frontdesk.php">Frontdesk</a></li>
+                    <li><a href="https://zone1.frontdeskanywhere.net/FDA/admine/#" >Preferences</a></li>
+                    <!-- <li><a href="../../site/public/console#/users/edit/481">My Profile</a></li> -->
+                    <li class="divider"></li>
+                                        <li><a href="https://zone1.frontdeskanywhere.net/site/public/login/logout">Log Out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav id="work-area-nav" class="navbar navbar-default header" role="navigation">
+    <div class="pull-left">
+	
+		<app-nav-links-pms></app-nav-links-pms>
+    
+    </div>
+        <div class="navbar-text pull-right multi-property-drop">
+        <ul>
+            <li class="dropdown">
+                <a href="https://zone1.frontdeskanywhere.net/FDA/admine/#" data-toggle="dropdown" class="dropdown-toggle">
+                <span class="fda-caret icon icon-info-outline account-info-icon" data-toggle="tooltip" data-placement="left" title="" data-original-title="&lt;b&gt;Account ID:&lt;/b&gt; 1ZN151110A &lt;br/&gt; &lt;b&gt;Version:&lt;/b&gt; v3.5.47.1"></span>
+                <strong>The Bangkok Boutique</strong><span class="fda-caret icon icon-expand-more"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="multiproperty_select" href="https://zone1.frontdeskanywhere.net/FDA/admine/#" value="1ZN151110A|481">The Bangkok Boutique</a></li>
+                                    <li><a class="multiproperty_select" href="https://zone1.frontdeskanywhere.net/FDA/admine/#" value="1ZN160111C|481">Mantra 3.1.8.1 Migration TEst</a></li>
+                                    <li><a class="multiproperty_select" href="https://zone1.frontdeskanywhere.net/FDA/admine/#" value="1ZN170117B|481">Envoy Hotel</a></li>
+                                    <li><a class="multiproperty_select" href="https://zone1.frontdeskanywhere.net/FDA/admine/#" value="1ZN180213E|481">Johnny's Crib</a></li>
+                                </ul>
+            </li>
+        </ul>
+        <span>5 Fake Street, Bangkok, Chong Nonsi 90210</span>
+    </div>
+</nav>
+	
+    
+<div class="container">
+    
+	<router-outlet>
+	</router-outlet>
+  
+</div>
+
+<app-footer-pms></app-footer-pms>
