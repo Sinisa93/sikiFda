@@ -11,56 +11,61 @@ import { tap } from 'rxjs/internal/operators';
   templateUrl: './add-edit-dialog-room-amenities.component.html',
   styleUrls: ['./add-edit-dialog-room-amenities.component.css']
 })
-export class AddEditDialogRoomAmenitiesComponent implements OnInit {
+export class AddEditDialogRoomAmenitiesComponent implements OnInit, OnDestroy {
 
   constructor(
-    private addEditDialogRef:MatDialogRef<AddEditDialogRoomAmenitiesComponent>,
+    public addEditDialogRef:MatDialogRef<AddEditDialogRoomAmenitiesComponent>,
     @Inject(MAT_DIALOG_DATA) public data:object,
     private formBuilder:FormBuilder,
     private roomAmenitiesService:RoomAmenitiesService,
     private roomAmenitiesFakeService:FakeRoomAmenitiesService
   ) { }
 
-  private _roomAmenities;
+   _roomAmenities;
   private roomAmenity;
   private formRoomAmenities;
-  private subscription:Subscription;
+  private subscription=new Subscription();
   labelPosition='before';
 
   ngOnInit() {
     this.formRoomAmenities=this.formBuilder.group({
       id:[],
-      txtTitle:['', Validators.required],
-      taDescription:[],
-      cbStatus:[]
-    });
-
-    // this._roomAmenities=this.roomAmenitiesService.get(this.data["id"]).pipe(
-    //   tap(
-    //     items=>{
-    //       this.formRoomAmenities.patchValue(items[0]);
-    //       this.roomAmenity=items[0];
-    //     }
-    //   )
-    // );
+      title:['', Validators.required],
+      description:[],
+      status:[]
+    });      
+    
+      this._roomAmenities=this.roomAmenitiesService.get(this.data["id"]).pipe(
+        tap(
+          items=>{
+            this.formRoomAmenities.patchValue(items[0]);
+            
+            console.log(items[0]);
+          }
+          
+        )
+        
+      );
+      
   }
   addData(){
-    // this.subscription= this.roomAmenitiesService.getAll().subscribe(
-    //   (data:any[])=>{
-    //     data=data.concat({
-    //       id:11,
-    //       title:this.formRoomAmenities.get('txtTitle'),
-    //       description:this.formRoomAmenities.get('taDescription'),
-    //       status:this.formRoomAmenities.get('cbStatus')
-    //     });
+     this.subscription.add(this.roomAmenitiesService.getAll().subscribe(
+      (data:any[])=>{
+        data=data.concat({
+          id:11,
+          title:this.formRoomAmenities.get('title').value,
+          description:this.formRoomAmenities.get('description').value,
+          status:this.formRoomAmenities.get('status').value
+        });
 
-    //     this.roomAmenitiesFakeService.roomAmenitiesFake.next(data);
-    //   }
-    // );
+        this.roomAmenitiesFakeService.roomAmenitiesFake.next(data);
+      }
+    ));
+   this.addEditDialogRef.close(this.formRoomAmenities.value);
    
   }
 
-  // ngOnDestroy() :void{
-  //   this.subscription.unsubscribe();
-  // }
+  ngOnDestroy():void{
+    this.subscription.unsubscribe();
+  }
 }

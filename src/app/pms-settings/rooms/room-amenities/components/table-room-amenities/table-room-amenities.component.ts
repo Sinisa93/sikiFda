@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { RoomAmenity } from '../../../../../interfaces/room-amenity';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -32,8 +32,9 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
               private roomAmenitiesDialog:MatDialog,
               private roomAmenitiesFakeService:FakeRoomAmenitiesService) { }
 
-  private subscription:Subscription;
+  private subscription=new Subscription();
   private dataSource=new MatTableDataSource<RoomAmenity>();
+  
   private selectedRows=new SelectionModel<any>(true,[]);
   private isVisibleColumnList=false;
   private roomAmenities;
@@ -74,12 +75,17 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.displayedColumns=this.getDisplayedColumns();
 
-    this.subscription=this.roomAmenitiesService.getAll().subscribe(
+    this.subscription.add(this.roomAmenitiesService.getAll().subscribe(
       (data:any[]) => {
         this.dataSource.data=data,
         this.roomAmenitiesFakeService.roomAmenitiesFake.next(data)
       }
-    );
+    ));
+    this.subscription.add(this.roomAmenitiesFakeService.roomAmenitiesFake$.subscribe(
+      data=>{
+        this.dataSource.data=data;
+      }
+    ));
     // this.subscription=this.roomAmenitiesFakeService.roomAmenitiesFake$.subscribe(
     //   data=>{
     //     this.dataSource=data;
@@ -127,17 +133,32 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
     this.dataSource.data=this.dataSource.data.filter(item=> !ArrayFunctions.inArray(item,selectedItems));
   }
 
-  openAddDialog(){
-    let dialogRef=this.roomAmenitiesDialog.open(AddEditDialogRoomAmenitiesComponent,{
-      width:'70%',
-      height:'70%'
-    });
+  openAddEditDialog(id?){
+   
+    // if(id!=null || id!=""){
+        let editDialogRef=this.roomAmenitiesDialog.open(AddEditDialogRoomAmenitiesComponent,{
+        width:'70%',
+        height:'70%',
+        data:{
+          id:id
+        }
+      });
+    // }
+    // else{
+    //   let addDialogRef=this.roomAmenitiesDialog.open(AddEditDialogRoomAmenitiesComponent,{
+    //     width:'70%',
+    //     height:'70%'
+    //   });
+    // }
+     
+    
+  
   }
 
   // openEditDialog(id){
   //   let openEditDialog=this.roomAmenitiesDialog.open(AddEditDialogRoomAmenitiesComponent,{
-  //     width:"65%",
-  //     height:"50%",
+  //     width:"70%",
+  //     height:"70%",
   //     data:{
   //       id:id
   //     }

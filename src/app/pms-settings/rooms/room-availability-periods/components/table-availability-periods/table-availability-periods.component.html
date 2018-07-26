@@ -73,9 +73,7 @@
                     <span *ngIf="column.propertyName=='title'">
                             <button 
                             mat-button
-                            
-                            >
-                            <!--uraditi clikc za edit-->
+                            (click)="openAddEditDialog(row.id)" >
                                {{row[column.propertyName]}}
                             </button>    
                     </span>
@@ -113,7 +111,7 @@
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-          <button mat-raised-button class="customBtn" (click)="openAddDialog()">Add</button>
+          <button mat-raised-button class="customBtn" (click)="openAddEditDialog()">Add</button>
           <button mat-raised-button (click)="onGroupDelete()" class="customBtn">Delete</button>
           <button mat-raised-button (click)="goBack()" class="customBtn">Close</button>
         </div>

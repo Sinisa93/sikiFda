@@ -8,6 +8,7 @@ import { ArrayFunctions } from '../../../../../shared/functions/array-functions'
 import { style, state, trigger } from '@angular/animations';
 import { Location } from '@angular/common';
 import { AddEditDialogAvailabilityPeriodsComponent } from '../add-edit-dialog-availability-periods/add-edit-dialog-availability-periods.component';
+import { FakeRoomAvailabilityPeriodsService } from '../../services/fake-room-availability-periods.service';
 
 @Component({
   selector: 'app-table-availability-periods',
@@ -28,10 +29,11 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
   constructor(
     private roomAvailabilityPeriodsService : RoomAvailabilityPeriodsService,
     private location:Location,
-    private roomAvailabilityPeriodsDialog:MatDialog
+    private roomAvailabilityPeriodsDialog:MatDialog,
+    private FakeRoomAvailabilityPeriodsService:FakeRoomAvailabilityPeriodsService
   ) { }
 
-  private subscription : Subscription;
+  private subscription = new Subscription();
   private dataSource = new MatTableDataSource<RoomAvailabilityPeriod>();
   private selectedRows = new SelectionModel<any>(true,[]);
   private isVisibleColumnList=false;
@@ -83,12 +85,17 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.displayedColumns = this.getDisplayedColumns();
 
-    this.subscription = this.roomAvailabilityPeriodsService.getAll().subscribe(
-      data=>{
+    this.subscription.add(this.roomAvailabilityPeriodsService.getAll().subscribe(
+      (data:any[])=>{
+        this.dataSource.data=data,
+        this.FakeRoomAvailabilityPeriodsService.roomAvailabilityPeriodsFake.next(data)
+      }
+    ));
+    this.subscription.add(this.FakeRoomAvailabilityPeriodsService.roomAvailabilityPeriodsFake$.subscribe(
+      (data:any[])=>{
         this.dataSource.data=data;
       }
-    );
-
+    ));
     this.dataSource.sort=this.sort;
     this.dataSource.paginator=this.paginator;
   }
@@ -133,10 +140,13 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
   goBack(){
     this.location.back();
   }
-  openAddDialog(){
+  openAddEditDialog(id?){
     let dialogRef=this.roomAvailabilityPeriodsDialog.open(AddEditDialogAvailabilityPeriodsComponent,{
       width:'70%',
-      height:'70%'
+      height:'70%',
+      data:{
+        id:id
+      }
     });
   }
 
