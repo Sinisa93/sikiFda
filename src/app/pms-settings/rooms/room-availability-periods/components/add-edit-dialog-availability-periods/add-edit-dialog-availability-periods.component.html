@@ -82,7 +82,7 @@
                 </mat-dialog-content>
                 <mat-dialog-actions>
                     <div class="button-row">
-                        <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" >Save</button>
+                        <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formRoomAvailabilityPeriods.valid " >Save</button>
                         <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Close</button>
                         
                     </div>
@@ -164,7 +164,7 @@
                 </mat-dialog-content>
                 <mat-dialog-actions>
                     <div class="button-row">
-                        <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" >Save</button>
+                        <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formRoomAvailabilityPeriods.valid ">Save</button>
                         <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Close</button>
                         
                     </div>
