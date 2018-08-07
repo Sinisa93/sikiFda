@@ -1,0 +1,87 @@
+ <div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Availablity Periods - Add/Edit</h3>
+      <hr>
+    </div>
+  </div>
+
+      <form [formGroup]="formRoomAvailabilityPeriods" *ngIf="(_roomAvailabilityPeriods | async) ? _roomAvailabilityPeriods : true" >
+              <mat-dialog-content>
+                <mat-form-field class="example-full-width">
+                    <input
+                    matInput
+                    formControlName="title"
+                    placeholder="Title"/>
+                    <mat-error *ngIf="formRoomAvailabilityPeriods.get('title').hasError('required')">
+                      <span style='color:red'>
+                        Title is required!
+                      </span>
+                    </mat-error>
+                </mat-form-field><br/>
+          
+                <mat-form-field class="example-full-width">
+                    <input
+                     matInput
+                     formControlName="start"
+                     [matDatepicker]="picker" 
+                     placeholder="Availability Start">
+                     <mat-datepicker-toggle 
+                     matSuffix 
+                     [for]="picker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker 
+                    #picker>
+                  </mat-datepicker>
+                  <mat-error *ngIf="formRoomAvailabilityPeriods.get('start').hasError('required')">
+                      <span style='color:red'>
+                          Availability Start is required!
+                      </span>
+                    </mat-error>
+                </mat-form-field><br/>
+          
+                <mat-radio-group >
+                    <mat-radio-button value="false" (click)="tooglePicker()" [checked]="true" class="rbButton">Ongoing </mat-radio-button>
+                    <mat-radio-button value="true" (click)="tooglePicker()">Set end date</mat-radio-button>
+                </mat-radio-group><br/>
+          
+                <mat-form-field [@showPicker]="isVisiblePicker" class="example-full-width">
+                    <input
+                     matInput
+                     formControlName="end"
+                     [matDatepicker]="picker1" 
+                     placeholder="Availability End">
+                     <mat-datepicker-toggle 
+                     matSuffix 
+                     [for]="picker1">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker 
+                    #picker1>
+                  </mat-datepicker>       
+                  
+                </mat-form-field><br/>
+                <mat-checkbox
+                matInput
+                formControlName="repeat"
+                labelPosition="before"
+                [@showPicker]="isVisiblePicker">
+                  Repeat
+              </mat-checkbox><br/>
+          
+                <mat-checkbox
+                  matInput
+                  formControlName="status"
+                  labelPosition="before">
+                    Status
+                </mat-checkbox><br/>
+          
+                <input formControlName="id" type="hidden"/><br><br>
+                
+              </mat-dialog-content>
+              <mat-dialog-actions>
+                  <div class="button-row">
+                      <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formRoomAvailabilityPeriods.valid " >Save</button>
+                      <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Close</button>
+                      
+                  </div>
+              </mat-dialog-actions>
+       </form>

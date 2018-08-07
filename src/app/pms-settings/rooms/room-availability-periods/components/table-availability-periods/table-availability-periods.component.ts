@@ -7,8 +7,10 @@ import { RoomAvailabilityPeriodsService } from '../../../../services/room-availa
 import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 import { style, state, trigger } from '@angular/animations';
 import { Location } from '@angular/common';
-import { AddEditDialogAvailabilityPeriodsComponent } from '../add-edit-dialog-availability-periods/add-edit-dialog-availability-periods.component';
-import { FakeRoomAvailabilityPeriodsService } from '../../services/fake-room-availability-periods.service';
+//import { AddEditDialogAvailabilityPeriodsComponent } from '../add-edit-dialog-availability-periods/add-edit-dialog-availability-periods.component';
+//import { FakeRoomAvailabilityPeriodsService } from '../../services/fake-room-availability-periods.service';
+import { RoomAvailabilityPeriodsDataService } from '../../../../services/room-availability-periods-data.service';
+import { FormAvailabilityPeriodsComponent } from '../form-availability-periods/form-availability-periods.component';
 
 @Component({
   selector: 'app-table-availability-periods',
@@ -30,7 +32,7 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
     private roomAvailabilityPeriodsService : RoomAvailabilityPeriodsService,
     private location:Location,
     private roomAvailabilityPeriodsDialog:MatDialog,
-    private FakeRoomAvailabilityPeriodsService:FakeRoomAvailabilityPeriodsService
+    private roomAvailabilityPeriodsDataService:RoomAvailabilityPeriodsDataService
   ) { }
 
   private subscription = new Subscription();
@@ -88,10 +90,10 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
     this.subscription.add(this.roomAvailabilityPeriodsService.getAll().subscribe(
       (data:any[])=>{
         this.dataSource.data=data,
-        this.FakeRoomAvailabilityPeriodsService.roomAvailabilityPeriodsFake.next(data)
+        this.roomAvailabilityPeriodsDataService.roomAvailabilityPeriodsData.next(data)
       }
     ));
-    this.subscription.add(this.FakeRoomAvailabilityPeriodsService.roomAvailabilityPeriodsFake$.subscribe(
+    this.subscription.add(this.roomAvailabilityPeriodsDataService.roomAvailabilityPeriodsData$.subscribe(
       (data:any[])=>{
         this.dataSource.data=data;
       }
@@ -141,13 +143,16 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
     this.location.back();
   }
   openAddEditDialog(id?){
-    let dialogRef=this.roomAvailabilityPeriodsDialog.open(AddEditDialogAvailabilityPeriodsComponent,{
-      width:'70%',
-      height:'70%',
-      data:{
-        id:id
-      }
-    });
+   
+     let roomAvailabilityPeriodsDialogRef=this.roomAvailabilityPeriodsDialog.open(FormAvailabilityPeriodsComponent,{
+        width:'50%',
+        height:'70%',
+        data:{
+          id:id
+        }
+      });
+  
+
   }
 
   ngOnDestroy():void{

@@ -7,8 +7,10 @@ import { RoomAmenitiesService } from '../../../../services/room-amenities.servic
 import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 import { Location } from '@angular/common';
 import { trigger, state, style } from '@angular/animations';
-import { AddEditDialogRoomAmenitiesComponent } from '../add-edit-dialog-room-amenities/add-edit-dialog-room-amenities.component';
-import { FakeRoomAmenitiesService } from '../../services/fake-room-amenities.service';
+//import { AddEditDialogRoomAmenitiesComponent } from '../add-edit-dialog-room-amenities/add-edit-dialog-room-amenities.component';
+//import { FakeRoomAmenitiesService } from '../../services/fake-room-amenities.service';
+import { RoomAmenitiesDataService } from '../../../../services/room-amenities-data.service';
+import { FormRoomAmenitiesComponent } from '../form-room-amenities/form-room-amenities.component';
 
 @Component({
   selector: 'app-table-room-amenities',
@@ -25,12 +27,12 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  //ViewChild za sortiranje i paginaciju
+  
 
   constructor(private roomAmenitiesService:RoomAmenitiesService, 
               private location:Location,
               private roomAmenitiesDialog:MatDialog,
-              private roomAmenitiesFakeService:FakeRoomAmenitiesService) { }
+              private roomAmenitiesDataService:RoomAmenitiesDataService) { }
 
   private subscription=new Subscription();
   private dataSource=new MatTableDataSource<RoomAmenity>();
@@ -78,19 +80,15 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
     this.subscription.add(this.roomAmenitiesService.getAll().subscribe(
       (data:any[]) => {
         this.dataSource.data=data,
-        this.roomAmenitiesFakeService.roomAmenitiesFake.next(data)
+        this.roomAmenitiesDataService.roomAmenitiesData.next(data)
       }
     ));
-    this.subscription.add(this.roomAmenitiesFakeService.roomAmenitiesFake$.subscribe(
+    this.subscription.add(this.roomAmenitiesDataService.roomAmenitiesData$.subscribe(
       data=>{
         this.dataSource.data=data;
       }
     ));
-    // this.subscription=this.roomAmenitiesFakeService.roomAmenitiesFake$.subscribe(
-    //   data=>{
-    //     this.dataSource=data;
-    //   }
-    // );
+   
     this.dataSource.sort=this.sort;
     this.dataSource.paginator=this.paginator;
    
@@ -134,36 +132,25 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
   }
 
   openAddEditDialog(id?){
-   
-    // if(id!=null || id!=""){
-        let editDialogRef=this.roomAmenitiesDialog.open(AddEditDialogRoomAmenitiesComponent,{
-        width:'70%',
-        height:'70%',
+    
+    // if(id!=null){
+      let roomAmenitiesDialogRef=this.roomAmenitiesDialog.open(FormRoomAmenitiesComponent,{
+        width:'50%',
+        height:'60%',
         data:{
           id:id
         }
-      });
-    // }
-    // else{
-    //   let addDialogRef=this.roomAmenitiesDialog.open(AddEditDialogRoomAmenitiesComponent,{
-    //     width:'70%',
-    //     height:'70%'
-    //   });
-    // }
-     
-    
-  
-  }
-
-  // openEditDialog(id){
-  //   let openEditDialog=this.roomAmenitiesDialog.open(AddEditDialogRoomAmenitiesComponent,{
-  //     width:"70%",
-  //     height:"70%",
-  //     data:{
-  //       id:id
-  //     }
-  //   });
+    });
   // }
+  // else{
+  //   editDialogRef=this.roomAmenitiesDialog.open(FormRoomAmenitiesComponent,{
+  //     width:'50%',
+  //     height:'80%',});
+  // }
+}
+ 
+
+
   goBack(){
     this.location.back();
   }
