@@ -24,7 +24,7 @@
             },
             {
                 "name" : "Order Rooms",
-                "path": ""
+                "path": "rooms/order-rooms"
             },
             {
                 "name" : "Room Availability Periods",

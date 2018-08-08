@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Order Rooms</h3>
+      <hr>
+    </div>
+  </div>
+  <ng-container class="row" *ngIf='isSame'><!--uraditi ngIf za isSame-->
+      <div class="alert alert-success" role="alert">
+        Success
+      </div>
+      <div class="alert alert-info" role="alert">
+        No changes to save
+      </div>
+  </ng-container>
+  <div class="row">
+    <div class="col-xs-3">
+      <form>
+        <mat-form-field>
+          <input
+          matInput
+          placeholder="Search"
+          class="custom-field"
+          (keyup)="onSearch(filter.value)"
+          #filter/>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="col-xs-6 pull-right">
+      <div class="col-xs-3 pull-right" id="showHideColumns">
+        <button
+          mat-raised-button
+          (click)="openColumnsList()">
+              SHOW / HIDE COLUMNS
+          </button>
+          <mat-selection-list
+          [@showList]="isVisibleColumnList">
+
+          <mat-list-option
+          *ngFor="let column of getEditableColumns()"
+          (click)="toggleColumn(column.propertyName, chbColumn.selected)"
+          #chbColumn
+          [selected]="displayedColumns.includes(column.propertyName)">
+          {{column.title}}
+          </mat-list-option>
+          </mat-selection-list>
+      </div>
+
+      <div class="col-xs-3 pull-right autoCompleteField">
+          <form>
+            <mat-form-field>
+              <input
+              type="text"
+              placeholder="Channel"
+              aria-label="Number"
+              matInput
+              [matAutocomplete]="auto"
+              name='Channel'
+              [value]='channels[1].name'/>
+            </mat-form-field>
+            <mat-autocomplete #auto="matAutocomplete">
+              <ng-container *ngFor="let channel of channels">
+                <mat-option #selectedChannel 
+                [value]="channel.name" 
+                (onSelectionChange)='onChannelSearch($event.isUserInput, selectedChannel.value)'>
+                {{channel.name}}
+              </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="formOrderRooms" >
+    <div formArrayName="orders">
+        <mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8"
+        matSort
+        [matSortDisableClear]="true">
+
+        <ng-container
+        *ngFor="let column of columns"
+        [matColumnDef]="column.propertyName">
+        <!--TH-->
+        <mat-header-cell
+        *matHeaderCellDef
+         mat-sort-header
+         [disabled]="isFixedColumn(column.propertyName)">
+          {{column.title}}
+        </mat-header-cell>
+
+        <!--TD-->
+        <mat-cell
+        *matCellDef="let row; let i = index;">
+            <ng-container *ngIf="!isFixedColumn(column.propertyName)">
+                <ng-container *ngIf="column.propertyName == 'order'">
+                    <input
+                    [formControlName]='i'
+                    type="number"
+                    matInput
+                    placeholder="Order"
+                    [value]="row[column.propertyName]"
+                    name="order"/>
+                </ng-container>
+                <ng-container *ngIf="column.propertyName != 'order'">
+                    {{row[column.propertyName]}}
+                </ng-container>
+            </ng-container>
+        </mat-cell>
+
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+    </div>
+  </form>  
+</div>

@@ -146,7 +146,7 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
    
      let roomAvailabilityPeriodsDialogRef=this.roomAvailabilityPeriodsDialog.open(FormAvailabilityPeriodsComponent,{
         width:'50%',
-        height:'70%',
+        height:'80%',
         data:{
           id:id
         }

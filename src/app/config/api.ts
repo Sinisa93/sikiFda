@@ -4,7 +4,8 @@ export const apiPaths = {
         rooms: {
             roomClasses: "/room-classes.json",
             roomAmenities: "/room-amenities.json",
-            roomAvailabilityPeriods: "/room-availability-periods.json"
+            roomAvailabilityPeriods: "/room-availability-periods.json",
+            orderRooms: "/order-rooms.json"
         }
        
     }

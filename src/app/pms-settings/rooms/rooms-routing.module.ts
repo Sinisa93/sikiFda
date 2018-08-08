@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'room-availability-periods',
     loadChildren: './room-availability-periods/room-availability-periods.module#RoomAvailabilityPeriodsModule'
+  },
+  {
+    path: 'order-rooms',
+    loadChildren: './order-rooms/order-rooms.module#OrderRoomsModule'
   }
 ];
 
