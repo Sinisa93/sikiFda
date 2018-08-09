@@ -133,7 +133,7 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
 
   openAddEditDialog(id?){
     
-    // if(id!=null){
+ 
       let roomAmenitiesDialogRef=this.roomAmenitiesDialog.open(FormRoomAmenitiesComponent,{
         width:'50%',
         height:'60%',
@@ -141,12 +141,6 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
           id:id
         }
     });
-  // }
-  // else{
-  //   editDialogRef=this.roomAmenitiesDialog.open(FormRoomAmenitiesComponent,{
-  //     width:'50%',
-  //     height:'80%',});
-  // }
 }
  
 

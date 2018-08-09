@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'rooms',
     loadChildren: './rooms/rooms.module#RoomsModule'
+  },
+  {
+    path:'pos',
+    loadChildren: './pos/pos.module#PosModule'
   }
 ];
 

@@ -86,7 +86,7 @@
         "children" : [
             {
                 "name" : "Pos Points",
-                "path": ""
+                "path": "pos/pos-points"
             },
             {
                 "name" : "Categories",

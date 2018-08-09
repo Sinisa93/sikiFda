@@ -1,0 +1,44 @@
+[
+    {
+        "id":1,
+        "title":"Store",
+        "description":"This is description about Store point",
+        "status":true
+    },
+    {
+        "id":2,
+        "title":"Test",
+        "description":"This is description about Test point",
+        "status":true
+    },
+    {
+        "id":3,
+        "title":"Restaurant",
+        "description":"This is description about Restaurant point",
+        "status":false
+    },
+    {
+        "id":4,
+        "title":"Pool",
+        "description":"This is description about Pool point",
+        "status":true
+    },
+    {
+        "id":5,
+        "title":"Spa",
+        "description":"This is description about Spa point",
+        "status":false
+    },
+    {
+        "id":6,
+        "title":"Gym",
+        "description":"This is description about Gym point",
+        "status":true
+    },
+    {
+        "id":7,
+        "title":"Cinema",
+        "description":"This is description about Cinema point",
+        "status":true
+    }
+]

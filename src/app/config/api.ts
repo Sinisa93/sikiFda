@@ -6,6 +6,9 @@ export const apiPaths = {
             roomAmenities: "/room-amenities.json",
             roomAvailabilityPeriods: "/room-availability-periods.json",
             orderRooms: "/order-rooms.json"
+        },
+        pos: {
+            posPoints: "/pos-points.json"
         }
        
     }
