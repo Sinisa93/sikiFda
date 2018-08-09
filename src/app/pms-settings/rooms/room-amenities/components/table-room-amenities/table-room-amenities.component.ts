@@ -38,7 +38,7 @@ export class TableRoomAmenitiesComponent implements OnInit, OnDestroy {
   private dataSource=new MatTableDataSource<RoomAmenity>();
   
   private selectedRows=new SelectionModel<any>(true,[]);
-  private isVisibleColumnList=false;
+  private isVisibleColumnList : boolean=false;
   private roomAmenities;
   private columns=[
     {

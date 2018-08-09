@@ -38,7 +38,7 @@ export class TableAvailabilityPeriodsComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   private dataSource = new MatTableDataSource<RoomAvailabilityPeriod>();
   private selectedRows = new SelectionModel<any>(true,[]);
-  private isVisibleColumnList=false;
+  private isVisibleColumnList : boolean=false;
 
   private columns= [
     {

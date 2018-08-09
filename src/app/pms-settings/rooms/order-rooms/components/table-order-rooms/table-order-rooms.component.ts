@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, FormArray } from '../../../../../../../node_mod
 import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 import {Location} from '@angular/common';
 import { trigger, state, style } from '../../../../../../../node_modules/@angular/animations';
+import { ValueTransformer } from '../../../../../../../node_modules/@angular/compiler/src/util';
 
 @Component({
   selector: 'app-table-order-rooms',
@@ -35,7 +36,7 @@ export class TableOrderRoomsComponent implements OnInit, OnDestroy {
   private subscription=new Subscription();
   private dataSource=new MatTableDataSource<OrderRoom>();
   private selectedRows=new SelectionModel<any>(true, []);
-  private isVisibleColumnList=false;
+  private isVisibleColumnList :boolean=false;
 
   private columns= [
     {
@@ -93,6 +94,7 @@ export class TableOrderRoomsComponent implements OnInit, OnDestroy {
 
   private loadedValues;
   private isSame:boolean;
+  private isSaved:boolean=false;
 
   ngOnInit() {
     this.displayedColumns = this.getDisplayedColumns();
@@ -156,8 +158,27 @@ export class TableOrderRoomsComponent implements OnInit, OnDestroy {
     ))
   }
 
+  goBack(){
+    this.location.back();
+  }
+
+  save(){
+    this.isSaved=true;
+    
+    let array1=this.formOrderRooms.value.orders;
+    let array2=this.loadedValues.orders;
+    if(array1.length === array2.length && array1.every((value, index) => value === array2[index])){
+      this.isSame=true;
+      this.loadedValues.orders=this.formOrderRooms.value.orders;
+    }
+    else{
+      this.isSame=false;
+      this.loadedValues.orders=this.formOrderRooms.value.orders;
+    }
+  }
+
   ngOnDestroy():void{
     this.subscription.unsubscribe();
   }
-//save, back, html dugmad dodat
+
 }
