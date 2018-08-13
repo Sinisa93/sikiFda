@@ -6,6 +6,16 @@ const routes: Routes = [
   {
     path:'',
     component:TablePosPointsComponent
+  },
+  {
+    path:'categories',
+    loadChildren:'../categories/categories.module#CategoriesModule',
+    pathMatch: 'full'
+  },
+  {
+    path: 'products',
+    loadChildren:'../products/products.module#ProductsModule',
+    pathMatch:'full'
   }
 ];
 

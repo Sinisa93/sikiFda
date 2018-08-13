@@ -1,12 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { PosPointsService } from '../../../../services/pos-points.service';
 import { Location } from '../../../../../../../node_modules/@angular/common';
-import { MatDialog, MatTableDataSource } from '../../../../../../../node_modules/@angular/material';
+import { MatDialog, MatTableDataSource, MatSort, MatPaginator } from '../../../../../../../node_modules/@angular/material';
 import { Subscription } from '../../../../../../../node_modules/rxjs';
 import { PosPoint } from '../../../../../interfaces/pos-point';
 import { SelectionModel } from '../../../../../../../node_modules/@angular/cdk/collections';
 import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 import { trigger, style, state } from '../../../../../../../node_modules/@angular/animations';
+import { FormPosPointsComponent } from '../form-pos-points/form-pos-points.component';
+import { PosPointsDataService } from '../../../../services/pos-points-data.service';
 
 @Component({
   selector: 'app-table-pos-points',
@@ -21,13 +23,15 @@ import { trigger, style, state } from '../../../../../../../node_modules/@angula
 })
 export class TablePosPointsComponent implements OnInit, OnDestroy {
 
-  //viewchild
+  @ViewChild(MatSort) sort:MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
   constructor(
     private posPointsService:PosPointsService,
     private location:Location,
-    private posPointsDialog:MatDialog
+    private posPointsDialog:MatDialog,
+    private posPointsDataService:PosPointsDataService
   ) { }
 
   private subscription = new Subscription();
@@ -86,12 +90,21 @@ export class TablePosPointsComponent implements OnInit, OnDestroy {
 
     this.subscription.add(this.posPointsService.getAll().subscribe(
       (data:any[])=>{
-        this.dataSource.data=data
-        //za dodavanje linija koda treba
+        this.dataSource.data=data,
+        this.posPointsDataService.posPointsData.next(data)
+        
+      }
+    ));
+
+    this.subscription.add(this.posPointsDataService.posPointsData$.subscribe(
+      data=>{
+        this.dataSource.data=data;
       }
     ));
 
     //mat i paginacija
+    this.dataSource.sort=this.sort;
+    this.dataSource.paginator=this.paginator;
   }
 
   getDisplayedColumns(){
@@ -131,6 +144,17 @@ export class TablePosPointsComponent implements OnInit, OnDestroy {
   }
 
   //openDialog
+  openAddEditDialog(id?){
+    
+ 
+    let posPointsDialogRef=this.posPointsDialog.open(FormPosPointsComponent,{
+      width:'50%',
+      height:'60%',
+      data:{
+        id:id
+      }
+  });
+}
 
   goBack(){
     this.location.back();

@@ -1,0 +1,26 @@
+.tablePadding {
+   
+    margin-right:-15px!important;
+}
+.tableSelectColumn{
+    width: 20%;
+    padding-left: 30px;
+}
+.tableCategoriesColumn{
+    width:150px;
+   margin-left:-120px;
+}
+
+.spanCellWitdh{
+    width: 50px;
+    
+}
+.tableRow{
+    width:100%;
+    /* padding-left: -51px; */
+}
+.customBtn{    
+    margin:5px;
+    margin-bottom: 60px;
+    margin-top:20px;
+}

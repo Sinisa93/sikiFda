@@ -45,7 +45,7 @@
 
   <mat-table 
   [dataSource]="dataSource"
-  class="mat-elevation-z8"
+  class="mat-elevation-z8 tablePosPoints"
   matSort
   [matSortDisableClear]="true">
 
@@ -63,49 +63,12 @@
 
      <!--TD-->
      <mat-cell
+         class="tablePadding" 
          *matCellDef="let row">
          <!--value columns => text -->
          <ng-container
          *ngIf="!isFixedColumn(column.propertyName)">
-         <!-- <span *ngIf="column.propertyName=='categories'">
-            <a routerLink='./categories'>
-            <button 
-            mat-button>
-              Categories
-            </button>
-            </a> / 
-            <button 
-            mat-button
-            (click)="openAddCategories()">
-            Add New
-          </button>
-              
-         </span> -->
-
-         <!-- <span *ngIf="column.propertyName=='products'">
-            <a routerLink='./products'>
-            <button 
-            mat-button>
-              Categories
-            </button>
-            </a> / 
-            <button 
-            mat-button
-            (click)="openAddProducts()">
-            Add New
-          </button>
-              
-         </span> -->
-
-         <!-- <span *ngIf="column.propertyName=='action'">
-            <button 
-            mat-button
-            (click)="openAddEditDialog(row.id)"
-            >
          
-               {{row[column.propertyName]}}
-            </button>  
-          </span> -->
           
           <span *ngIf="column.propertyName=='status' && row[column.propertyName]===true">
               <mat-checkbox
@@ -116,13 +79,13 @@
               ></mat-checkbox>
           </span>
 
-          <span *ngIf="column.propertyName!='action' && column.propertyName!='status' && column.propertyName!='categories' && column.propertyName!='products'">                   
+          <span *ngIf="column.propertyName!='action' && column.propertyName!='status' && column.propertyName!='categories' && column.propertyName!='products'" class="spanCellWitdh">                   
               {{row[column.propertyName]}}                    
         </span>
          </ng-container>
 
          <ng-container 
-            *ngIf="column.propertyName == 'select'">
+            *ngIf="column.propertyName == 'select'" class="tableSelectColumn">
               <mat-checkbox 
               (click)="$event.stopPropagation()"
               (change)="$event ? selectedRows.toggle(row) : null"
@@ -130,17 +93,17 @@
               </mat-checkbox>
          </ng-container>
 
-         <ng-container *ngIf="column.propertyName=='categories'">
-            <a routerLink='/categories'>
+         <ng-container *ngIf="column.propertyName=='categories'" class="tableCategoriesColumn">
+            <a routerLink='./categories' class="tableCategoriesColumnLink">
               <button 
               mat-button>
                 Categories
               </button>
               </a> / 
-              <button 
+              <button class="tableCategoriesColumnButton"
               mat-button
               (click)="openAddCategories()">
-              Add New
+              Add
             </button>
          </ng-container>
 
@@ -154,7 +117,7 @@
               <button 
               mat-button
               (click)="openAddProducts()">
-              Add New
+              Add
             </button>
          </ng-container>
 
@@ -171,9 +134,24 @@
 <mat-header-row 
 *matHeaderRowDef="displayedColumns">
 </mat-header-row>
-<mat-row 
+<mat-row class="tableRow"
 *matRowDef="let row; columns: displayedColumns;"
 (click)="selectedRows.toggle(row)">
 </mat-row>
 </mat-table>
+
+<mat-paginator
+[pageSizeOptions]="pageSizeOptions">
+
+</mat-paginator>
+
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <button mat-raised-button (click)="openAddEditDialog()" class="customBtn">Add a POS Points</button>
+    <button mat-raised-button (click)="onGroupDelete()" class="customBtn">Delete a POS Points</button>
+    <button mat-raised-button (click)="goBack()" class="customBtn">Cancel</button>
+  </div>
+  <div class="col-lg-3"></div>
+</div>
 </div>
