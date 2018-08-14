@@ -1,3 +1,174 @@
-<p>
-  table-pos-categories works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / POS Categories</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-3">
+      <form>
+          <mat-form-field>
+            <input 
+            matInput 
+            placeholder="Search" 
+            class="custom-field"
+            (keyup)="onSearch(filter.value)"
+            #filter
+            >
+          </mat-form-field>
+      </form>
+    </div>
+
+    <div class="col-xs-6 pull-right">
+
+      <div class="col-xs-3 pull-right" id="showHideColumns">
+        <button
+          mat-raised-button
+          (click)="openColumnsList()">
+              SHOW / HIDE COLUMNS
+        </button>
+
+        <mat-selection-list
+          [@showList]="isVisibleColumnList">
+
+          <mat-list-option
+          *ngFor="let column of getEditableColumns()"
+          (click)="toggleColumn(column.propertyName, chbColumn.selected)"
+          #chbColumn
+          [selected]="displayedColumns.includes(column.propertyName)">
+          {{column.title}}
+          </mat-list-option>
+          </mat-selection-list>
+      </div>
+
+      <div class="col-xs-3 pull-right autoCompleteField">
+        <form>
+          <mat-form-field>
+            <input
+            type="text"
+            placeholder="POS Points"
+            aria-label="Number"
+            matInput
+            [matAutocomplete]="auto"
+            name='Channel'
+            [value]='channels[0].name'/>
+          </mat-form-field>
+          <mat-autocomplete #auto="matAutocomplete">
+            <ng-container *ngFor="let channel of channels">
+              <mat-option #selectedChannel 
+              [value]="channel.name" 
+              (onSelectionChange)='onChannelSearch($event.isUserInput, selectedChannel.value)'>
+              {{channel.name}}
+            </mat-option>
+            </ng-container>
+          </mat-autocomplete>
+        </form>
+    </div>
+    </div>
+
+  </div>
+
+  <form [formGroup]="formPosCategories" >
+    <div formArrayName="posCategories">
+      <mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+      matSort
+      [matSortDisableClear]="true">
+
+   <ng-container 
+  *ngFor="let column of columns" 
+  [matColumnDef]="column.propertyName">
+
+  <!--TH-->
+  <mat-header-cell 
+  *matHeaderCellDef
+  mat-sort-header 
+  [disabled]="isFixedColumn(column.propertyName)">
+       {{column.title}}
+  </mat-header-cell>
+
+  <mat-cell
+         class="tablePadding" 
+         *matCellDef="let row">
+         <!--value columns => text -->
+         <ng-container
+         *ngIf="!isFixedColumn(column.propertyName)">
+        
+         <span *ngIf="column.propertyName=='status' && row[column.propertyName]===true">
+          <mat-checkbox
+          checked='true'></mat-checkbox>
+        </span>
+        <span *ngIf="column.propertyName=='status' && row[column.propertyName]===false">
+          <mat-checkbox
+          ></mat-checkbox>
+        </span>
+
+        <span *ngIf="column.propertyName!='action' && column.propertyName!='status' && column.propertyName!='products'" class="spanCellWitdh">                   
+         {{row[column.propertyName]}}                    
+    
+         
+        </span>
+        </ng-container>
+
+        <ng-container 
+        *ngIf="column.propertyName == 'select'" class="tableSelectColumn">
+          <mat-checkbox 
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selectedRows.toggle(row) : null"
+          [checked]="selectedRows.isSelected(row)">
+          </mat-checkbox>
+       </ng-container>
+        
+       <ng-container *ngIf="column.propertyName=='products'">
+        <a routerLink='./products'>
+          <button 
+          mat-button>
+            Products
+          </button>
+          </a> / 
+          <button 
+          mat-button
+          (click)="openAddProducts()">
+          Add
+        </button>
+     </ng-container>
+
+     <ng-container *ngIf="column.propertyName=='action'">
+      <button 
+      mat-button
+      (click)="openAddEditDialog(row.id)">
+         Edit
+      </button>  
+   </ng-container>
+
+  </mat-cell>
+  </ng-container>
+
+  <mat-header-row 
+    *matHeaderRowDef="displayedColumns">
+    </mat-header-row>
+    <mat-row class="tableRow"
+    *matRowDef="let row; columns: displayedColumns;"
+    (click)="selectedRows.toggle(row)">
+  </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <button mat-raised-button (click)="openAddEditDialog()" class="customBtn">Add a POS Category</button>
+        <button mat-raised-button (click)="onGroupDelete()" class="customBtn">Delete a POS Category</button>
+        <button mat-raised-button (click)="goBack()" class="customBtn">Cancel</button>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+
+    </div>
+  </form>
+</div>

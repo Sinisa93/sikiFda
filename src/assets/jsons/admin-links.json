@@ -90,7 +90,7 @@
             },
             {
                 "name" : "Categories",
-                "path": ""
+                "path": "pos/categories"
             },
             {
                 "name" : "Products",

@@ -8,7 +8,8 @@ export const apiPaths = {
             orderRooms: "/order-rooms.json"
         },
         pos: {
-            posPoints: "/pos-points.json"
+            posPoints: "/pos-points.json",
+            posCategories: "/pos-categories.json"
         }
        
     }

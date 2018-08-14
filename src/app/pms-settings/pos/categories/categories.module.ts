@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { TablePosCategoriesComponent } from './components/table-pos-categories/table-pos-categories.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    CategoriesRoutingModule
+    CategoriesRoutingModule,
+    SharedModule
   ],
   declarations: [TablePosCategoriesComponent]
 })

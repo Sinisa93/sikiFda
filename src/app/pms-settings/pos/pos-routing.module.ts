@@ -10,11 +10,6 @@ const routes: Routes = [
     path: 'categories',
     loadChildren: './categories/categories.module#CategoriesModule',
     pathMatch: 'full'
-  },
-  {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
   }
 ];
 

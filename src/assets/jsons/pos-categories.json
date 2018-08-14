@@ -1,0 +1,62 @@
+[
+    {
+        "id":1,
+        "title":"Food",
+        "description":"This is description about Food category",
+        "status":true,
+        "point":"Store",
+        "idProduct":1,
+        "channel":{
+            "id":1,
+            "name":"Store"
+        }
+    },
+    {
+        "id":2,
+        "title":"Food",
+        "description":"This is description about Food2 category",
+        "status":false,
+        "point":"Store",
+        "idProduct":2,
+        "channel":{
+            "id":1,
+            "name":"Store"
+        }
+    },
+    {
+        "id":3,
+        "title":"Drink",
+        "description":"This is description about Drink category",
+        "status":true,
+        "point":"Test Point",
+        "idProduct":3,
+        "channel":{
+            "id":2,
+            "name":"Test Point"
+        }
+    },
+    {
+        "id":4,
+        "title":"Desert",
+        "description":"This is description about Desert category",
+        "status":true,
+        "point":"Store",
+        "idProduct":1,
+        "channel":{
+            "id":1,
+            "name":"Store"
+        }
+    },
+    {
+        "id":5,
+        "title":"Ice Cream",
+        "description":"This is description about Ice cream category",
+        "status":false,
+        "point":"Test Point",
+        "idProduct":4,
+        "channel":{
+            "id":2,
+            "name":"Test Point"
+        }
+    }
+]
