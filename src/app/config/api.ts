@@ -10,6 +10,9 @@ export const apiPaths = {
         pos: {
             posPoints: "/pos-points.json",
             posCategories: "/pos-categories.json"
+        },
+        accounting:{
+            revenueAccountLabels: "/revenue-account-labels.json"
         }
        
     }

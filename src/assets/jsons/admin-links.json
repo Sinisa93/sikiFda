@@ -267,7 +267,7 @@
             },
             {
                 "name": "Revenue Account Labels",
-                "path": ""
+                "path": "accounting/revenue-account-labels"
             },
             {
                 "name": "Revenue Account Manager",
@@ -275,7 +275,7 @@
             },
             {
                 "name": "Revenue Account Categories",
-                "path": ""
+                "path": "accounting/revenue-account-categories"
             },
             {
                 "name": "Revenue Account Rules",

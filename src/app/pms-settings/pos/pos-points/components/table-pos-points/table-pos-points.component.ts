@@ -9,6 +9,7 @@ import { ArrayFunctions } from '../../../../../shared/functions/array-functions'
 import { trigger, style, state } from '../../../../../../../node_modules/@angular/animations';
 import { FormPosPointsComponent } from '../form-pos-points/form-pos-points.component';
 import { PosPointsDataService } from '../../../../services/pos-points-data.service';
+import { FormPosCategoriesComponent } from '../../../categories/components/form-pos-categories/form-pos-categories.component';
 
 @Component({
   selector: 'app-table-pos-points',
@@ -31,7 +32,8 @@ export class TablePosPointsComponent implements OnInit, OnDestroy {
     private posPointsService:PosPointsService,
     private location:Location,
     private posPointsDialog:MatDialog,
-    private posPointsDataService:PosPointsDataService
+    private posPointsDataService:PosPointsDataService,
+    private posCategoriesDialog:MatDialog
   ) { }
 
   private subscription = new Subscription();
@@ -154,6 +156,15 @@ export class TablePosPointsComponent implements OnInit, OnDestroy {
         id:id
       }
   });
+}
+openAddCategories(id?){
+  let posCategoriesDialogRef=this.posPointsDialog.open(FormPosCategoriesComponent,{
+    width:'50%',
+    height:'60%',
+    data:{
+      id:id
+    }
+});
 }
 
   goBack(){

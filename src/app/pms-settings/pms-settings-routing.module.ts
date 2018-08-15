@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path:'pos',
     loadChildren: './pos/pos.module#PosModule'
+  },
+  {
+    path:'accounting',
+    loadChildren: './accounting/accounting.module#AccountingModule'
   }
 ];
 

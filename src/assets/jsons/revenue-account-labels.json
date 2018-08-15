@@ -1,0 +1,37 @@
+[
+    {
+        "id":1,
+        "title":"Test",
+        "status":true
+    },
+    {
+        "id":2,
+        "title":"Super user ",
+        "status":false
+    },
+    {
+        "id":3,
+        "title":"Test user",
+        "status":false
+    },
+    {
+        "id":4,
+        "title":"Customer",
+        "status":true
+    },
+    {
+        "id":5,
+        "title":"Client",
+        "status":true
+    },
+    {
+        "id":6,
+        "title":"Developer",
+        "status":false
+    },
+    {
+        "id":7,
+        "title":"Tester",
+        "status":true
+    }
+]

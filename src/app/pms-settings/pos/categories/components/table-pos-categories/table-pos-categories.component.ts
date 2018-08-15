@@ -2,12 +2,14 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { PosCategoriesService } from '../../../../services/pos-categories.service';
 import { FormBuilder, FormGroup, FormArray } from '../../../../../../../node_modules/@angular/forms';
 import { Subscription } from '../../../../../../../node_modules/rxjs';
-import { MatTableDataSource, MatSort, MatPaginator } from '../../../../../../../node_modules/@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '../../../../../../../node_modules/@angular/material';
 import { PosCategory } from '../../../../../interfaces/pos-category';
 import { SelectionModel } from '../../../../../../../node_modules/@angular/cdk/collections';
 import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 import { Location } from '../../../../../../../node_modules/@angular/common';
 import { trigger, state, style } from '../../../../../../../node_modules/@angular/animations';
+import { FormPosCategoriesComponent } from '../form-pos-categories/form-pos-categories.component';
+import { PosCategoriesDataService } from '../../../../services/pos-categories-data.service';
 
 @Component({
   selector: 'app-table-pos-categories',
@@ -29,7 +31,9 @@ export class TablePosCategoriesComponent implements OnInit, OnDestroy {
   constructor(
     private posCategoriesService:PosCategoriesService,
     private location:Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private posCategoriesDialog:MatDialog,
+    private posCategoriesDataService:PosCategoriesDataService
   ) { }
 
   private subscription=new Subscription();
@@ -104,6 +108,7 @@ export class TablePosCategoriesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.displayedColumns = this.getDisplayedColumns();
     this.fillTable('Store');
+
     this.dataSource.sort=this.sort;
     this.dataSource.paginator=this.paginator;
   }
@@ -168,7 +173,25 @@ export class TablePosCategoriesComponent implements OnInit, OnDestroy {
         this.loadedValues=this.formPosCategories.value;
       }
     ));
+
+    this.subscription.add(this.posCategoriesDataService.posCategoriesData$.subscribe(
+      data=>{
+        this.dataSource.data=data;
+      }
+    ));
   }
+
+  openAddEditDialog(id?){
+    
+ 
+    let posPointsDialogRef=this.posCategoriesDialog.open(FormPosCategoriesComponent,{
+      width:'50%',
+      height:'60%',
+      data:{
+        id:id
+      }
+  });
+}
 
   goBack(){
     this.location.back();

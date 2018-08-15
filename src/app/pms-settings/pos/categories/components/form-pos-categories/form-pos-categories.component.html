@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3><a routerLink="/pms-settings">Control Panel</a> / POS Categories - Add/Edit</h3>
+    <hr>
+  </div>
+</div>
+
+<form [formGroup]="formPosCategories" *ngIf="(_posCategories | async) ? _posCategories :true" >
+  <mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Category Title"
+        />
+        <mat-error *ngIf="formPosCategories.get('title').hasError('required')">
+          <span style='color:red'>
+            Title is required!
+          </span>
+        </mat-error>
+    </mat-form-field><br/>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="POS Point" formControlName="point">
+        <mat-option *ngFor="let posPoint of posPoints" [value]="posPoint.title" >
+          {{posPoint.title}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formPosCategories.get('point').hasError('required')">
+        <span style='color:red'>
+          POS Point is required!
+        </span>
+      </mat-error>
+    </mat-form-field><br/>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="2"
+        cdkAutosizeMaxRows="5"
+        formControlName="description">
+        </textarea>
+      </mat-form-field><br/>
+
+      <mat-checkbox
+      matInput
+      formControlName="status"
+      labelPosition="before">
+        Status
+      </mat-checkbox><br/>
+      <input formControlName="id" type="hidden"/><br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div class="button-row">
+        <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formPosCategories.valid ">Save POS Categories</button>
+        <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Cancel</button>
+        
+    </div>
+</mat-dialog-actions>
+</form>
