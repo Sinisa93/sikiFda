@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3><a routerLink="/pms-settings">Control Panel</a> / Revenue Account Labels - Add/Edit</h3>
+    <hr>
+  </div>
+</div>
+
+<form [formGroup]="formRevenueAccountLabels" *ngIf="(_revenueAccountLabels | async) ? _revenueAccountLabels :true" >
+
+  <mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Revenue Account Label"
+        />
+        <mat-error *ngIf="formRevenueAccountLabels.get('title').hasError('required')">
+          <span style='color:red'>
+            Revenue Account Label is required!
+          </span>
+        </mat-error>
+    </mat-form-field><br/>
+
+    <mat-checkbox
+      matInput
+      formControlName="status"
+      labelPosition="before">
+        Status
+      </mat-checkbox><br/>
+      <input formControlName="id" type="hidden"/><br><br>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div class="button-row">
+        <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formRevenueAccountLabels.valid ">Save Revenue Account Label</button>
+        <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Cancel</button>
+        
+    </div>
+</mat-dialog-actions>
+
+</form>
