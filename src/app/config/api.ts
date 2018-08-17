@@ -12,7 +12,8 @@ export const apiPaths = {
             posCategories: "/pos-categories.json"
         },
         accounting:{
-            revenueAccountLabels: "/revenue-account-labels.json"
+            revenueAccountLabels: "/revenue-account-labels.json",
+            revenueAccountCategory: "/revenue-account-categories.json"
         }
        
     }

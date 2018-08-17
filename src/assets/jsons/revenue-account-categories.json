@@ -1,0 +1,37 @@
+[
+    {
+        "id":1,
+        "title":"Test category",
+        "status":true
+    },
+    {
+        "id":2,
+        "title":"Super category",
+        "status":false
+    },
+    {
+        "id":3,
+        "title":"Rich category",
+        "status":false
+    },
+    {
+        "id":4,
+        "title":"Store",
+        "status":true
+    },
+    {
+        "id":5,
+        "title":"Moderator",
+        "status":true
+    },
+    {
+        "id":6,
+        "title":"Super user",
+        "status":false
+    },
+    {
+        "id":7,
+        "title":"Client category",
+        "status":true
+    }
+]
