@@ -56,10 +56,6 @@
                 "path" : ""
             },
             {
-                "name" : "Taxes",
-                "path" : ""
-            },
-            {
                 "name" : "Yield Management Rules",
                 "path" : ""
             },
@@ -94,7 +90,11 @@
             },
             {
                 "name" : "Products",
-                "path": ""
+                "path": "pos/products"
+            },
+            {
+                "name" : "Add-ons",
+                "path": "pos/add-ons"
             }
         ]
     },
@@ -234,8 +234,12 @@
         "name" : "Accounting",
         "children" : [
             {
+                "name" : "Taxes",
+                "path" : "accounting/taxes"
+            },
+            {
                 "name": "Currency",
-                "path": ""
+                "path": "accounting/currency"
             },
             {
                 "name": "Fiscal Year",
@@ -247,7 +251,7 @@
             },
             {
                 "name": "Credit Card Types",
-                "path": ""
+                "path": "accounting/credit-card-types"
             },
             {
                 "name": "Payment Processing",
@@ -255,11 +259,11 @@
             },
             {
                 "name": "Credit Card Purge",
-                "path": ""
+                "path": "accounting/credit-card-purge"
             },
             {
                 "name": "Invoices",
-                "path": ""
+                "path": "accounting/invoice"
             },
             {
                 "name": "Adjustment Reason List",
@@ -279,7 +283,7 @@
             },
             {
                 "name": "Revenue Account Rules",
-                "path": ""
+                "path": "accounting/revenue-account-rules"
             },
             {
                 "name": "Night Audit Settings",

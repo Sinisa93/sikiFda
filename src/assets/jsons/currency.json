@@ -1,0 +1,30 @@
+[
+    {
+        "id":1,
+        "title":"$ USD - US Dolar"
+    },
+    {
+        "id":2,
+        "title":"EUR - Euro"
+    },
+    {
+        "id":3,
+        "title":"GBP - British Pound Sterling"
+    },
+    {
+        "id":4,
+        "title":"$ CAD - Canadian Dolar"
+    },
+    {
+        "id":5,
+        "title":"$ AUD - Australian Dolar"
+    },
+    {
+        "id":6,
+        "title":"$ SGD - Singapore Dolar"
+    },
+    {
+        "id":7,
+        "title":"$ NZD - New Zeland Dolar"
+    }
+]

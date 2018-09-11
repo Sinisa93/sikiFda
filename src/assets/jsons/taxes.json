@@ -1,0 +1,62 @@
+[
+    {
+        "id":1,
+        "title":"First tax",
+        "status":true,
+        "tax":{
+            "isTaxPercentage":true,
+            "percentage":"20.00000 %",
+            "fixedAmountTax":null
+        },
+        "isPerReservation":true,
+        "isInclusiveTax":true
+    },
+    {
+        "id":2,
+        "title":"Test",
+        "status":false,
+        "tax":{
+            "isTaxPercentage":false,
+            "percentage":null,
+            "fixedAmountTax":"12 $"
+        },
+        "isPerReservation":true,
+        "isInclusiveTax":true
+   },
+   {
+    "id":3,
+    "title":"10%",
+    "status":true,
+    "tax":{
+        "isTaxPercentage":true,
+        "percentage":"10.00000 %",
+        "fixedAmountTax":null
+    },
+    "isPerReservation":true,
+    "isInclusiveTax":false
+    },
+    {
+        "id":4,
+        "title":"Dolar tax",
+        "status":true,
+        "tax":{
+            "isTaxPercentage":false,
+            "percentage":null,
+            "fixedAmountTax":"132 $"
+        },
+        "isPerReservation":true,
+        "isInclusiveTax":true
+   },
+   {
+    "id":5,
+    "title":"Week percent tax",
+    "status":false,
+    "tax":{
+        "isTaxPercentage":true,
+        "percentage":"43.00000 %",
+        "fixedAmountTax":null
+    },
+    "isPerReservation":true,
+    "isInclusiveTax":false
+    }
+]

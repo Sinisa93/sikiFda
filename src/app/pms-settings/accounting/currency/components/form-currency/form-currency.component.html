@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3><a routerLink="/pms-settings">Control Panel</a> / Currency </h3>
+    <hr>
+  </div>
+</div>
+<!-- *ngIf="(_currency | async) ? _currency :true" -->
+<form [formGroup]="formCurrency">
+  <mat-dialog-content>
+    <mat-select formControlName="currencyList" [ngModel]="default.currencyList">
+      <mat-option [value]="0">Select default value for currency</mat-option>
+      <mat-option [value]="currenc.title" *ngFor="let currenc of currency">
+        {{currenc.title}}
+      </mat-option>
+    </mat-select><br/><br/>
+
+    <mat-radio-group formControlName="securityDeposit">
+      <mat-radio-button 
+      value="on"  
+      [checked]="true" 
+      class="rbButton">On </mat-radio-button>
+      
+      <mat-radio-button 
+      value="off" >Off</mat-radio-button>
+    </mat-radio-group><br/>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div class="button-row">
+        <button mat-raised-button class="btnCustomize" type="submit"  [disabled]="!formCurrency.valid ">Save Currency Change</button>
+        <button mat-raised-button class="btnCustomize" (click)="resetForm()">Reset</button>
+        <button mat-raised-button class="btnCustomize" (click)="goBack()">Cancel</button>
+        
+    </div>
+</mat-dialog-actions>
+</form>

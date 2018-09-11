@@ -8,8 +8,17 @@ const routes: Routes = [
   },
   {
     path: 'categories',
-    loadChildren: './categories/categories.module#CategoriesModule',
-    pathMatch: 'full'
+    loadChildren: './categories/categories.module#CategoriesModule'
+  },
+  {
+    path: 'products',
+    loadChildren:'./products/products.module#ProductsModule',
+    
+  },
+  {
+    path: 'add-ons',
+    loadChildren:'./add-ons/add-ons.module#AddOnsModule',
+    
   }
 ];
 

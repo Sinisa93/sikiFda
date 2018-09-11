@@ -1,0 +1,21 @@
+.btnCustomize{
+    color:#fff;
+    background-color:#0ab0d1;
+    margin-left:115px;
+    margin-top:20px;
+    
+}
+
+.invoiceContent{
+    width:80%;
+    margin-left:5%;
+    margin-top: 2%;
+}
+.leftContent{
+    width:20%;
+    float:left;
+}
+.rightContent{
+    width:20%;
+    float:left;
+}

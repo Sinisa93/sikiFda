@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Credit Card Types - Add/Edit</h3>
+      <hr>
+    </div>
+</div>
+
+<form [formGroup]="formCreditCardTypes" *ngIf="(_creditCardTypes | async) ? _creditCardTypes :true" >
+    <mat-dialog-content>
+        <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="title"
+              placeholder="Accepted Credit Card"
+              />
+              <mat-error *ngIf="formCreditCardTypes.get('title').hasError('required')">
+                <span style='color:red'>
+                    Accepted Credit Card is required!
+                </span>
+              </mat-error>
+          </mat-form-field><br/>
+
+          <mat-checkbox
+          matInput
+          formControlName="status"
+          labelPosition="before">
+            Status
+          </mat-checkbox><br/>
+          <input formControlName="id" type="hidden"/><br><br>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div class="button-row">
+            <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formCreditCardTypes.valid ">Save Credit Card Type</button>
+            <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Cancel</button>
+            
+        </div>
+    </mat-dialog-actions>
+  
+</form>
+
+  

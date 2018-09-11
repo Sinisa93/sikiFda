@@ -9,11 +9,18 @@ export const apiPaths = {
         },
         pos: {
             posPoints: "/pos-points.json",
-            posCategories: "/pos-categories.json"
+            posCategories: "/pos-categories.json",
+            posProducts:"/pos-products.json",
+            addOns:"/add-ons.json"
         },
         accounting:{
             revenueAccountLabels: "/revenue-account-labels.json",
-            revenueAccountCategory: "/revenue-account-categories.json"
+            revenueAccountCategory: "/revenue-account-categories.json",
+            taxes: "/taxes.json",
+            creditCardTypes:"/credit-card-types.json",
+            currency:"/currency.json",
+            creditCardPurge:"/credit-card-purge.json",
+            revenueAccountRules:"/revenue-account-rules.json"
         }
        
     }

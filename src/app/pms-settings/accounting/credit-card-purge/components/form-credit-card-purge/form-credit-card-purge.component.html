@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3><a routerLink="/pms-settings">Control Panel</a> / Credit Card Purge </h3>
+    <hr>
+  </div>
+</div>
+
+<form [formGroup]="formCreditCardPurge" *ngIf="(_creditCardPurge | async) ? _creditCardPurge :true" >
+  <mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <mat-label>Purge credit cards numbers that are no longer needed</mat-label>
+      <input
+        matInput
+        formControlName="days"
+        placeholder="Days old or older"
+        />
+
+    </mat-form-field><br/><br/>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div class="button-row">
+        <button mat-raised-button class="btnCustomize" type="submit" >Save Changes</button>
+        <button mat-raised-button class="btnCustomize" (click)="resetForm()">Purge Credit Card Numbers</button><!--Dilema is, whar are doing that button!!!-->
+        <button mat-raised-button class="btnCustomize" (click)="goBack()">Cancel</button>
+        
+    </div>
+</mat-dialog-actions>
+</form>

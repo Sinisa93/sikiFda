@@ -1,0 +1,42 @@
+[
+    {
+        "id":1,
+        "title":"Late Checkout",
+        "price":"25.00 $",
+        "type":"Change Once",
+        "status":true,
+        "description":"This is description about Late Checkout"
+    },
+    {
+        "id":2,
+        "title":"Extra Bed",
+        "price":"20.00 $",
+        "type":"Per Night",
+        "status":true,
+        "description":"This is description about Extra Bed"
+    },
+    {
+        "id":3,
+        "title":"Air conditions",
+        "price":"15.00 $",
+        "type":"Change Once",
+        "status":true,
+        "description":"This is description about Air conditions"
+    },
+    {
+        "id":4,
+        "title":"Pool",
+        "price":"15.00 $",
+        "type":"Change Once",
+        "status":true,
+        "description":"This is description about Pool"
+    },
+    {
+        "id":5,
+        "title":"testing addons",
+        "price":"125.00 $",
+        "type":"Per Night",
+        "status":false,
+        "description":"This is description about Late Checkout"
+    }
+]

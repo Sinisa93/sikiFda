@@ -1,0 +1,83 @@
+[
+    {
+        "id":1,
+        "name":"DummyFolio",
+        "title":"DummyFolio",
+        "price":"20 $",
+        "status":true,
+        "description":"This is description about DummyFolio",
+        "category":{
+            "id":1,
+            "title":"Food"
+        },
+        "posPoint":{
+            "id":1,
+            "title":"Store"
+        }
+    },
+    {
+        "id":2,
+        "name":"0#Beverage",
+        "title":"Restaurant Beverage Default Shift",
+        "price":"0 $",
+        "status":false,
+        "description":"This is description about 0#Beverage",
+        "category":{
+            "id":1,
+            "title":"Food"
+        },
+        "posPoint":{
+            "id":1,
+            "title":"Store"
+        }
+    },
+    {
+        "id":3,
+        "name":"3#Beverage",
+        "title":"Restaurant Beverage Lunch",
+        "price":"0 $",
+        "status":true,
+        "description":"This is description about 3#Beverage",
+        "category":{
+            "id":3,
+            "title":"Drink"
+        },
+        "posPoint":{
+            "id":3,
+            "title":"Restaurant"
+        }
+    },
+    {
+        "id":4,
+        "name":"4#Beverage",
+        "title":"Restaurant Beverage New Lunch",
+        "price":"30 $",
+        "status":false,
+        "description":"This is description about 4#Beverage",
+        "category":{
+            "id":4,
+            "title":"Desert"
+        },
+        "posPoint":{
+            "id":3,
+            "title":"Restaurant"
+        }
+    },
+    {
+        "id":5,
+        "name":"Test",
+        "title":"5#DS#Test",
+        "price":"86 $",
+        "status":true,
+        "description":"This is description about 5#DS#Beverage",
+        "category":{
+            "id":5,
+            "title":"Ice Cream"
+        },
+        "posPoint":{
+            "id":3,
+            "title":"Restaurant"
+        }
+
+    }
+]

@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Tax List - Add/Edit</h3>
+      <hr>
+    </div>
+</div>
+
+<form [formGroup]="formTaxes" *ngIf="(_taxes | async) ? _taxes :true">
+    <mat-dialog-content>
+        <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="title"
+              placeholder="Tax Title"
+              />
+              <mat-error *ngIf="formTaxes.get('title').hasError('required')">
+                <span style='color:red'>
+                  Title is required!
+                </span>
+              </mat-error>
+          </mat-form-field><br/>
+          <div formGroupName="tax">
+            <mat-radio-group>
+              <mat-radio-button 
+              value="tax" 
+              (click)="setValue('tax')" 
+              [checked]="true" 
+              class="rbButton">Tax Percentage </mat-radio-button>
+              
+              <mat-radio-button 
+              value="fixed" 
+              (click)="setValue('fixed')">Fixed Amount Tax</mat-radio-button>
+            </mat-radio-group><br/>
+
+            <ng-container *ngIf="tooglePercentage('tax');else other">
+                <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      type="text"
+                      formControlName="percentage"
+                      placeholder="Tax Percentage"
+                      required
+                      />
+
+                    </mat-form-field><br/>
+                  </ng-container>
+                <ng-template #other>
+                    <mat-form-field>
+                        <input
+                          matInput
+                          type="type"
+                          formControlName="fixedAmountTax"
+                          placeholder="Fixed Amount Tax"
+                          required
+                          />
+
+                    </mat-form-field>
+                </ng-template>
+          </div>
+          <ng-container *ngIf="tooglePercentage('fixed');">
+              <mat-select  
+              formControlName="isPerReservation"
+               class="ddlFaxTax" 
+               placeholder="Choose an option">
+                <mat-option value="PerReservation" >
+                  Per Reservation
+                </mat-option>
+                <mat-option value="PerNight/Session" >
+                    Per Night/Session
+                  </mat-option>
+              </mat-select>
+          </ng-container>
+                      
+        <div class="chbDiv">
+        <mat-checkbox
+        matInput
+        formControlName="status"
+        labelPosition="before">
+          Status
+        </mat-checkbox>
+
+        <mat-checkbox
+        matInput
+        formControlName="isInclusiveTax"
+        labelPosition="before"
+        class="chbPadding">
+          Inclusive Tax
+        </mat-checkbox><br/>
+        </div>
+        <input formControlName="id" type="hidden"/><br><br>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <div class="button-row">
+          <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formTaxes.valid ">Save Tax</button>
+          <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Cancel</button>
+          
+      </div>
+  </mat-dialog-actions>
+
+</form>

@@ -1,0 +1,13 @@
+.spanCellWitdh{
+    width: 50px;
+    
+}
+.tableRow{
+    width:100%;
+    /* padding-left: -51px; */
+}
+.customBtn{    
+    margin:5px;
+    margin-bottom: 60px;
+    margin-top:20px;
+}

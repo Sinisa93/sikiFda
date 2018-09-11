@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3><a routerLink="/pms-settings">Control Panel</a> / POS Add-on - Add/Edit</h3>
+    <hr>
+  </div>
+</div>
+<!-- *ngIf="(_addOns | async) ? _addOns :true" -->
+<form [formGroup]="formAddOns" *ngIf="(_addOns | async) ? _addOns :true"  >
+
+  <mat-dialog-content>
+      <mat-form-field class="example-full-width">
+          <input
+            matInput
+            formControlName="title"
+            placeholder="Charge title"
+            />
+            <mat-error *ngIf="formAddOns.get('title').hasError('required')">
+              <span style='color:red'>
+                Charge title is required!
+              </span>
+            </mat-error>
+        </mat-form-field><br/><br/>
+
+        <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="price"
+              placeholder="Price"
+              />
+              <mat-error *ngIf="formAddOns.get('price').hasError('required')">
+                <span style='color:red'>
+                  Price is required!
+                </span>
+              </mat-error>
+          </mat-form-field><br/><br/>
+
+          <ng-container *ngFor="let tax of formAddOns.get('taxes').controls; let i=index">
+              <mat-checkbox
+              [checked]="tax.value.checked"
+              (change)="toggleCheckbox($event.checked,i)">
+                {{tax.value.data.title}}
+              </mat-checkbox><br/>
+          </ng-container><br/>
+
+          <mat-select  
+          formControlName="type"
+           class="ddlFaxTax" 
+           placeholder="Choose an option">
+            
+            <mat-option value="Per Night" >
+                Per Night
+            </mat-option>
+            <mat-option value="Charge Once" >
+                Charge Once
+              </mat-option>
+          </mat-select><br/><br/>
+
+          <mat-select formControlName="revenueLabel" [ngModel]="default.revenueLabel">
+              <mat-option [value]="0">Select Revenue Label</mat-option>
+              <mat-option [value]="label.id" *ngFor="let label of revenueLabels">
+                {{label.title}}
+              </mat-option>
+          </mat-select> <br/><br/>
+      
+          <mat-select formControlName="revenueCategory" [ngModel]="default.revenueCategory">
+              <mat-option [value]="0">Select Revenue Category</mat-option>
+              <mat-option [value]="category.id" *ngFor="let category of revenueCategories">
+                {{category.title}}
+              </mat-option>
+          </mat-select> <br/> <br/>
+
+          <mat-form-field class="example-full-width">
+              <!-- <mat-label>Description</mat-label> -->
+              <textarea
+              matInput
+              placeholder="Description"
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+              cdkAutosizeMaxRows="5"
+              formControlName="description">
+              </textarea>
+            </mat-form-field><br/>
+      
+            <mat-checkbox
+            matInput
+            formControlName="status"
+            labelPosition="before">
+              Status
+            </mat-checkbox><br/>
+      
+            <input formControlName="id" type="hidden"/><br><br>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+      <div class="button-row">
+          <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formAddOns.valid ">Save Add On</button>
+          <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Cancel</button>
+          
+      </div>
+  </mat-dialog-actions>
+
+</form>

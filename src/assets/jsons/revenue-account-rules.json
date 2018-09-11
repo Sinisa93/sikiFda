@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "title":"If Add-on applied Before stay period, post revenue 0 days after Check-In Date."
+    },
+    {
+        "id":2,
+        "title":"If POST item applied Before stay period, post revenue 0 days after Check-In Date."
+    },
+    {
+        "id":3,
+        "title":"If Add-on applied Drugin stay period, post revenue 0 days after Transaction Date."
+    },
+    {
+        "id":4,
+        "title":"If POS item applied During stay period, post revenue 0 days after Transaction Date."
+    },
+    {
+        "id":5,
+        "title":"If Add-on applied After stay period, post revenue 0 days after Transaction Date."
+    },
+    {
+        "id":6,
+        "title":"If POS item applied After stay period, post revenue 0 days after Transaction Date."
+    }
+]
