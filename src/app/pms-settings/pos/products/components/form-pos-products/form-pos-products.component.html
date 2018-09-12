@@ -40,10 +40,10 @@
       </mat-option>
     </mat-select> <br/> <br/> 
 
-    <mat-select formControlName="posCategory" [ngModel]="default.posCategory">
+    <mat-select formControlName="category" [ngModel]="default.posCategory">
         <mat-option [value]="0">Select POS Category</mat-option>
-        <mat-option [value]="category.title" *ngFor="let category of categories">
-          {{category.title}}
+        <mat-option [value]="categoryy.id" *ngFor="let categoryy of categories">
+          {{categoryy.title}}
         </mat-option>
     </mat-select><br/><br/>
 

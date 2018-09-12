@@ -10,3 +10,7 @@
 .example-full-width {
     width: 100%;
   }
+.groupRadio{
+    width:100%;
+    float:left;
+}

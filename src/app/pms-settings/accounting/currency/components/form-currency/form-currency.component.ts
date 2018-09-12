@@ -5,6 +5,7 @@ import { CurrencyService } from '../../../../services/currency.service';
 import { Currency } from '../../../../../interfaces/currency';
 import { Subscription, Observable } from '../../../../../../../node_modules/rxjs';
 import { Location } from '../../../../../../../node_modules/@angular/common';
+import { CurrencyOptionsService } from '../../../../services/currency-options.service';
 
 @Component({
   selector: 'app-form-currency',
@@ -25,6 +26,7 @@ export class FormCurrencyComponent implements OnInit, OnDestroy {
     private location:Location,
     private formBuilder:FormBuilder,
     private currencyService:CurrencyService,
+    private currencyOptionsService:CurrencyOptionsService
   ) { }
 
   private _currency:Observable<Currency[]>;
@@ -32,7 +34,10 @@ export class FormCurrencyComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formCurrency=this.formBuilder.group({
       currencyList:['',Validators.required],
-      securityDeposit:[]
+      securityDeposit:[],
+      creditCardForReservations:[],
+      creditCardForPOS:[],
+      creditCardForProfiles:[]
     });
 
     this._subscription.add(this.currencyService.getAll().subscribe(
@@ -41,6 +46,31 @@ export class FormCurrencyComponent implements OnInit, OnDestroy {
        
       }
     ))
+  }
+  addData(){
+    this._subscription.add(this.currencyService.getAll().subscribe(
+      
+      (data:any[])=>{
+        data=data.concat({
+          currencyList:this.formCurrency.get('currencyList').value
+        });
+        console.log(data);
+      }
+    
+  ));
+  this._subscription.add(this.currencyOptionsService.getAll().subscribe(
+      
+    (data:any[])=>{
+      data=data.concat({
+        securityDeposit:this.formCurrency.get('securityDeposit').value,
+        creditCardForReservations:this.formCurrency.get('creditCardForReservations').value,
+        creditCardForPOS:this.formCurrency.get('creditCardForPOS').value,
+        creditCardForProfiles:this.formCurrency.get('creditCardForProfiles').value
+      });
+      console.log(data);
+    }
+  
+));
   }
   
   goBack(){

@@ -152,8 +152,7 @@
     *matHeaderRowDef="displayedColumns">
     </mat-header-row>
     <mat-row class="tableRow"
-    *matRowDef="let row; columns: displayedColumns;"
-    (click)="selectedRows.toggle(row)">
+    *matRowDef="let row; columns: displayedColumns;">
   </mat-row>
     </mat-table>
 

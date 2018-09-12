@@ -19,8 +19,11 @@ export const apiPaths = {
             taxes: "/taxes.json",
             creditCardTypes:"/credit-card-types.json",
             currency:"/currency.json",
+            currencyOptions:"/currencyOptions.json",
             creditCardPurge:"/credit-card-purge.json",
-            revenueAccountRules:"/revenue-account-rules.json"
+            revenueAccountRules:"/revenue-account-rules.json",
+            nightAuditSettings:"/night-audit-settings.json",
+            fiscalYear:"/fiscal-year.json"
         }
        
     }

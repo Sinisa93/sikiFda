@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Night Audit Settings</h3>
+      <hr>
+    </div>
+  </div>
+
+  <form [formGroup]="formNightAuditSettings">
+    <mat-dialog-content>
+      <mat-checkbox
+      formControlName="runNightAudit"
+      labelPosition="before">
+        Automatically Run Night Audit
+      </mat-checkbox><br/><br/>
+
+      <mat-select formControlName="time" [ngModel]="default.RunNightAudit">
+        <mat-option [value]="0">Select Time for Run Night Audit</mat-option>
+        <mat-option [value]="runTime.time" *ngFor="let runTime of runTimes">
+          {{runTime.time}}
+        </mat-option>
+    </mat-select> <br/> <br/>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <div class="button-row">
+          <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" >Save Changes</button>
+          <button mat-raised-button class="btnCustomize" (click)="goBack()">Cancel</button>
+          
+      </div>
+  </mat-dialog-actions>
+  </form>
+</div>

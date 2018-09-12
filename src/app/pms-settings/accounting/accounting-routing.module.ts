@@ -33,7 +33,15 @@ const routes: Routes = [
   {
     path: 'revenue-account-rules',
     loadChildren: './revenue-account-rules/revenue-account-rules.module#RevenueAccountRulesModule'
-  }
+  },
+  {
+    path: 'night-audit-settings',
+    loadChildren: './night-audit-settings/night-audit-settings.module#NightAuditSettingsModule'
+  },
+  {
+    path: 'fiscal-year',
+    loadChildren: './fiscal-year/fiscal-year.module#FiscalYearModule'
+  },
 ];
 
 @NgModule({

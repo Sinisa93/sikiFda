@@ -11,6 +11,7 @@ import { RevenueAccountLabel } from '../../../../../interfaces/revenue-account-l
 import { RevenueAccountCategory } from '../../../../../interfaces/revenue-account-category';
 import { RevenueAccountLabelsService } from '../../../../services/revenue-account-labels.service';
 import { RevenueAccountCategoriesService } from '../../../../services/revenue-account-categories.service';
+import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 
 @Component({
   selector: 'app-form-add-ons',
@@ -27,6 +28,7 @@ export class FormAddOnsComponent implements OnInit, OnDestroy {
     revenueLabel : 0,
     revenueCategory : 0
   }
+  private addons;
 
   formAddOns : any;
 
@@ -45,6 +47,25 @@ export class FormAddOnsComponent implements OnInit, OnDestroy {
   private _addOns:Observable<AddOn[]>;
 
   ngOnInit() {
+
+    this._subscription.add(this.AddOnsService.getAll().subscribe(
+      data=>{
+        if(this.data){
+          let oneAddon=data.filter(x=>x.id==this.data['id']);
+          let x=oneAddon[0];
+          this.formAddOns.patchValue({
+            title:x['title'],
+            price:x['price'],
+            type:x['type'],
+            revenueLabel:x['revenueLabel']['id'],
+            revenueCategory:x['revenueCategory']['id'],
+            description:x['description'],
+            status:x['status']
+          });
+        }
+        this.addons=data;
+      }
+    ))
     this.formAddOns=this.formBuilder.group({
       id:[],
       title:['', Validators.required],
@@ -61,18 +82,27 @@ export class FormAddOnsComponent implements OnInit, OnDestroy {
 
     if (this.data) { 
       
-      this._addOns=this.AddOnsService.getById(this.data['id']).pipe(
-        tap(items=>{
-          this.formAddOns.patchValue(items[0]);
+     // this._addOns=this.AddOnsService.getById(this.data['id']).pipe(
+       // tap(items=>{
+          // this.formAddOns.patchValue(items[0]);
           
-        })
-      )
+       // })
+      //)
     }
 
     this._subscription.add(this.taxesService.getAll().subscribe(
       data=>{
-        for(let i=0; i<data.length; i++)
+        for(let i=0; i<data.length; i++){
           (this.formAddOns.get('taxes') as FormArray).push(new FormControl({data:data[i], checked:false}))
+        }
+        for(let i=0; i<data.length; i++){
+          if(this.data!=null){
+            let oneAddon = this.addons.filter(x=>x.id == this.data['id']);
+            if(ArrayFunctions.inArray(oneAddon[0].taxes.map(x=>x.id)[i],data.map(x=>x.id))){
+              this.formAddOns.get('taxes').value[i+1].checked=true;
+            }
+          }
+        }
       }
     ))
 
@@ -87,6 +117,8 @@ export class FormAddOnsComponent implements OnInit, OnDestroy {
         this.revenueCategories=data;
       }
     ))
+
+    
   }
 
   addData(){

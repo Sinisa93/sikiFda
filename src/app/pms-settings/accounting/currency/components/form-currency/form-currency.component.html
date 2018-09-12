@@ -14,20 +14,54 @@
       </mat-option>
     </mat-select><br/><br/>
 
-    <mat-radio-group formControlName="securityDeposit">
+    <mat-radio-group formControlName="securityDeposit" class="groupRadio">
+      <mat-label>Security Deposits</mat-label><br/>
       <mat-radio-button 
-      value="on"  
+      value="true"  
       [checked]="true" 
       class="rbButton">On </mat-radio-button>
       
       <mat-radio-button 
-      value="off" >Off</mat-radio-button>
+      value="false" >Off</mat-radio-button>
     </mat-radio-group><br/>
+
+    <mat-radio-group formControlName="creditCardForReservations" class="groupRadio">
+        <mat-label>Credit Card Billing Information Required For Reservation</mat-label><br/>
+        <mat-radio-button 
+        value="true"  
+        class="rbButton">On </mat-radio-button>
+        
+        <mat-radio-button 
+        value="false"
+        [checked]="true"  >Off</mat-radio-button>
+      </mat-radio-group><br/>
+
+      <mat-radio-group formControlName="creditCardForPOS" class="groupRadio">
+         <mat-label>Credit Card Billing Information Required For POS</mat-label> <br/>
+          <mat-radio-button 
+          value="true"  
+          class="rbButton">On </mat-radio-button>
+          
+          <mat-radio-button 
+          value="false"
+          [checked]="true"  >Off</mat-radio-button>
+        </mat-radio-group><br/>
+
+        <mat-radio-group formControlName="creditCardForProfiles" class="groupRadio">
+            <mat-label>Credit Card Billing Information Required For Profiles</mat-label><br/>
+            <mat-radio-button 
+            value="true"  
+            class="rbButton">On </mat-radio-button>
+            
+            <mat-radio-button 
+            value="false"
+            [checked]="true"  >Off</mat-radio-button>
+          </mat-radio-group><br/>
   </mat-dialog-content>
 
   <mat-dialog-actions>
     <div class="button-row">
-        <button mat-raised-button class="btnCustomize" type="submit"  [disabled]="!formCurrency.valid ">Save Currency Change</button>
+        <button mat-raised-button class="btnCustomize" type="submit"  (click)="addData()" [disabled]="!formCurrency.valid ">Save Currency Change</button>
         <button mat-raised-button class="btnCustomize" (click)="resetForm()">Reset</button>
         <button mat-raised-button class="btnCustomize" (click)="goBack()">Cancel</button>
         

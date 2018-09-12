@@ -15,6 +15,7 @@ import { RevenueAccountLabel } from '../../../../../interfaces/revenue-account-l
 import { RevenueAccountCategory } from '../../../../../interfaces/revenue-account-category';
 import { RevenueAccountCategoriesService } from '../../../../services/revenue-account-categories.service';
 import { tap } from '../../../../../../../node_modules/rxjs/internal/operators';
+import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 
 @Component({
   selector: 'app-form-pos-products',
@@ -51,13 +52,35 @@ export class FormPosProductsComponent implements OnInit, OnDestroy {
   ) { }
 
   private _posProducts:Observable<PosProduct[]>;
+  private posProducts;
   ngOnInit() {
+
+    this._subscription.add(this.posProductsService.getAll().subscribe(
+      data=>{
+        if(this.data){
+          let oneProduct=data.filter(x=>x.id == this.data['id']);
+          let x=oneProduct[0];
+          this.formPosProducts.patchValue({
+            name:x['name'],
+            title:x['title'],
+            posPoint:x['posPoint']['id'],
+            category:x['category']['id'],
+            revenueLabel:x['revenueLabel']['id'],
+            revenueCategory:x['revenueCategory']['id'],
+            price:x['price'],
+            description:x['description'],
+            status:x['status']
+          });
+        }
+        this.posProducts=data;
+      }
+    ));
     this.formPosProducts=this.formBuilder.group({
       id:[],
       name:['',Validators.required],
       title:['', Validators.required],
       posPoint:[],
-      posCategory:[],
+      category:[],
       revenueLabel:[],
       revenueCategory:[],
       price:['',Validators.required],
@@ -70,12 +93,12 @@ export class FormPosProductsComponent implements OnInit, OnDestroy {
 
     if (this.data) { 
       
-      this._posProducts=this.posProductsService.getById(this.data['id']).pipe(
-        tap(items=>{
-          this.formPosProducts.patchValue(items[0]);
+      // this._posProducts=this.posProductsService.getById(this.data['id']).pipe(
+      //   tap(items=>{
+      //     this.formPosProducts.patchValue(items[0]);
           
-        })
-      )
+      //   })
+      // )
     }
 
     this._subscription.add(this.posPointService.getAll().subscribe(
@@ -107,6 +130,15 @@ export class FormPosProductsComponent implements OnInit, OnDestroy {
         console.log(this.formPosProducts.get('taxes'));
         for(let i=0;i<data.length;i++)
         (this.formPosProducts.get('taxes') as FormArray).push(new FormControl({data:data[i], checked:false}))
+
+        for(let i=0; i<data.length; i++){
+          if(this.data!=null){
+            let oneProduct = this.posProducts.filter(x=>x.id == this.data['id']);
+            if(ArrayFunctions.inArray(oneProduct[0].taxes.map(x=>x.id)[i],data.map(x=>x.id))){
+              this.formPosProducts.get('taxes').value[i+1].checked=true;
+            }
+          }
+        }
     
     }
     ))
@@ -125,13 +157,13 @@ export class FormPosProductsComponent implements OnInit, OnDestroy {
           description:this.formPosProducts.get('description').value,
           status:this.formPosProducts.get('status').value,
           posPoint:this.formPosProducts.get('posPoint').value,
-          posCategory:this.formPosProducts.get('posCategory').value,
+          posCategory:this.formPosProducts.get('category').value,
           revenueLabel:this.formPosProducts.get('revenueLabel').value,
           revenueCategory:this.formPosProducts.get('revenueCategory').value,
           price:this.formPosProducts.get('price').value,
           taxes:this.formPosProducts.get('taxes').value
         });
-
+        console.log(data)
         this.posProductsDataService.posProductsData.next(data);
       }
     ));

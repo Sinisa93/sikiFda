@@ -3,40 +3,117 @@
         "id":1,
         "title":"Late Checkout",
         "price":"25.00 $",
-        "type":"Change Once",
+        "type":"ChargeOnce",
         "status":true,
-        "description":"This is description about Late Checkout"
+        "description":"This is description about Late Checkout",
+        "taxes":[
+            {
+                "id":2,
+                "title":"Test"
+            }
+        ],
+        "revenueLabel":{
+            "id":2,
+            "title":"Super user"
+        },
+        "revenueCategory":{
+            "id":3,
+            "title":"Rich category"
+        }
     },
     {
         "id":2,
         "title":"Extra Bed",
         "price":"20.00 $",
-        "type":"Per Night",
+        "type":"PerNight",
         "status":true,
-        "description":"This is description about Extra Bed"
+        "description":"This is description about Extra Bed",
+        "taxes":[
+            {
+                "id":2,
+                "title":"Test"
+            },
+            {
+                "id":3,
+                "title":"10%"
+            }
+        ],
+        "revenueLabel":{
+            "id":2,
+            "title":"Super user"
+        },
+        "revenueCategory":{
+            "id":1,
+            "title":"Test category"
+        }
     },
     {
         "id":3,
         "title":"Air conditions",
         "price":"15.00 $",
-        "type":"Change Once",
+        "type":"ChargeOnce",
         "status":true,
-        "description":"This is description about Air conditions"
+        "description":"This is description about Air conditions",
+        "taxes":[
+            {
+                "id":2,
+                "title":"Test"
+            },
+            {
+                "id":3,
+                "title":"10%"
+            },
+            {
+                "id":4,
+                "title":"Dolar tax%"
+            }
+        ],
+        "revenueLabel":{
+            "id":3,
+            "title":"Test user"
+        },
+        "revenueCategory":{
+            "id":2,
+            "title":"Super category"
+        }
     },
     {
         "id":4,
         "title":"Pool",
         "price":"15.00 $",
-        "type":"Change Once",
+        "type":"ChargeOnce",
         "status":true,
-        "description":"This is description about Pool"
+        "description":"This is description about Pool",
+        "taxes":[
+            {
+                "id":2,
+                "title":"Test"
+            }
+        ],
+        "revenueLabel":{
+            "id":4,
+            "title":"Customer"
+        },
+        "revenueCategory":{
+            "id":3,
+            "title":"Rich category"
+        }
     },
     {
         "id":5,
         "title":"testing addons",
         "price":"125.00 $",
-        "type":"Per Night",
+        "type":"PerNight",
         "status":false,
-        "description":"This is description about Late Checkout"
+        "description":"This is description about Late Checkout",
+        "taxes":[],
+        "revenueLabel":{
+            "id":5,
+            "title":"Client"
+        },
+        "revenueCategory":{
+            "id":4,
+            "title":"Store"
+        }
     }
 ]

@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Fiscal Year </h3>
+      <hr>
+    </div>
+  </div>
+
+  <form [formGroup]="formFiscalYear">
+    <h4>Please Adjust Your Fiscal Year</h4><br/>
+
+    <mat-dialog-content>
+      <ng-container>
+          <mat-label class="paddingYear">Current Fiscal Year</mat-label>
+          <label #year >{{years}}</label>
+      </ng-container><br/>
+
+      <mat-form-field class="titleWidth" *ngFor="let year of _fiscalYear">
+        <mat-label class="paddingYear">Set Fiscal Year</mat-label>
+
+          <input
+
+            matInput
+            formControlName="title"
+            placeholder="Set Fiscal Year"
+            value="{{year.title}}"
+            text-align="center"
+            />
+         
+        </mat-form-field><br/>
+     
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div class="button-row">
+            <button mat-raised-button class="btnCustomize" type="submit"  (click)="addData()" >Save Changes</button>
+            <button mat-raised-button class="btnCustomize" (click)="goBack()">Cancel</button>
+            
+        </div>
+    </mat-dialog-actions>
+
+  </form>

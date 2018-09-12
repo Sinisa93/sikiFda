@@ -1,0 +1,9 @@
+[
+    {
+        "id":1,
+        "securityDeposits":true,
+        "creditCardForReservations":false,
+        "creditCardForPOS":false,
+        "creditCardForProfiles":false
+    }
+]

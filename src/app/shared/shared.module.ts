@@ -29,7 +29,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatRadioModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    
   ],
   exports: [ PmsLayoutComponent, NavLinksPmsComponent,FooterPmsComponent, MatTableModule, MatCheckboxModule, MatButtonModule, MatSortModule, MatMenuModule, MatListModule, MatExpansionModule, MatIconModule, MatPaginatorModule, MatInputModule, MatDialogModule, ReactiveFormsModule, MatFormFieldModule, FormsModule, MatDatepickerModule, MatRadioModule, MatNativeDateModule, MatAutocompleteModule, MatSelectModule ],
   declarations: [ PmsLayoutComponent, NavLinksPmsComponent,FooterPmsComponent ]
