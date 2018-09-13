@@ -32,7 +32,7 @@ export class FormPosProductsComponent implements OnInit, OnDestroy {
 
   private default : object = {
     posPoint : 0,
-    posCategory : 0,
+    category : 0,
     revenueLabel : 0,
     revenueCategory : 0
   }
@@ -63,10 +63,10 @@ export class FormPosProductsComponent implements OnInit, OnDestroy {
           this.formPosProducts.patchValue({
             name:x['name'],
             title:x['title'],
-            posPoint:x['posPoint']['id'],
-            category:x['category']['id'],
-            revenueLabel:x['revenueLabel']['id'],
-            revenueCategory:x['revenueCategory']['id'],
+            posPoint:x['posPoint']['title'],
+            category:x['category']['title'],
+            revenueLabel:x['revenueLabel']['title'],
+            revenueCategory:x['revenueCategory']['title'],
             price:x['price'],
             description:x['description'],
             status:x['status']
@@ -156,10 +156,22 @@ export class FormPosProductsComponent implements OnInit, OnDestroy {
           title:this.formPosProducts.get('title').value,
           description:this.formPosProducts.get('description').value,
           status:this.formPosProducts.get('status').value,
-          posPoint:this.formPosProducts.get('posPoint').value,
-          posCategory:this.formPosProducts.get('category').value,
-          revenueLabel:this.formPosProducts.get('revenueLabel').value,
-          revenueCategory:this.formPosProducts.get('revenueCategory').value,
+          posPoint:
+          {
+            title:this.formPosProducts.get('posPoint').value
+          },
+          category:
+          {
+            title:this.formPosProducts.get('category').value
+          },
+          revenueLabel:
+          {
+            title:this.formPosProducts.get('revenueLabel').value
+          },
+          revenueCategory:
+          {
+            title: this.formPosProducts.get('revenueCategory').value
+          },
           price:this.formPosProducts.get('price').value,
           taxes:this.formPosProducts.get('taxes').value
         });

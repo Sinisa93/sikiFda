@@ -1,0 +1,45 @@
+[
+    {
+        "id":1,
+        "code":"STFER",
+        "title":"Staff Error",
+        "status":true
+    },
+    {
+        "id":2,
+        "code":"ABSTFER",
+        "title":"Staff Info",
+        "status":true
+    },
+    {
+        "id":3,
+        "code":"WASTFER",
+        "title":"Staff warning",
+        "status":false
+    },
+    {
+        "id":4,
+        "code":"SUSTFERS",
+        "title":"Staff Success",
+        "status":true
+    },
+    {
+        "id":5,
+        "code":"DRSTFER",
+        "title":"Staff drop",
+        "status":true
+    },
+    {
+        "id":6,
+        "code":"STFER TEST",
+        "title":"Staff testing",
+        "status":false
+    },
+    {
+        "id":7,
+        "code":"SaSTFER",
+        "title":"Error",
+        "status":true
+    }
+
+]

@@ -23,7 +23,8 @@ export const apiPaths = {
             creditCardPurge:"/credit-card-purge.json",
             revenueAccountRules:"/revenue-account-rules.json",
             nightAuditSettings:"/night-audit-settings.json",
-            fiscalYear:"/fiscal-year.json"
+            fiscalYear:"/fiscal-year.json",
+            adjustmentReasonLists:"/adjustment-reason-list.json"
         }
        
     }

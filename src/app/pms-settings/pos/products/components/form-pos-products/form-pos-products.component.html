@@ -35,28 +35,28 @@
 
     <mat-select formControlName="posPoint" [ngModel]="default.posPoint">
       <mat-option [value]="0">Select POS Point</mat-option>
-      <mat-option [value]="point.id" *ngFor="let point of points">
+      <mat-option [value]="point.title" *ngFor="let point of points">
         {{point.title}}
       </mat-option>
     </mat-select> <br/> <br/> 
 
-    <mat-select formControlName="category" [ngModel]="default.posCategory">
+    <mat-select formControlName="category" [ngModel]="default.category">
         <mat-option [value]="0">Select POS Category</mat-option>
-        <mat-option [value]="categoryy.id" *ngFor="let categoryy of categories">
+        <mat-option [value]="categoryy.title" *ngFor="let categoryy of categories">
           {{categoryy.title}}
         </mat-option>
     </mat-select><br/><br/>
 
     <mat-select formControlName="revenueLabel" [ngModel]="default.revenueLabel">
         <mat-option [value]="0">Select Revenue Label</mat-option>
-        <mat-option [value]="label.id" *ngFor="let label of revenueLabels">
+        <mat-option [value]="label.title" *ngFor="let label of revenueLabels">
           {{label.title}}
         </mat-option>
     </mat-select> <br/><br/>
 
     <mat-select formControlName="revenueCategory" [ngModel]="default.revenueCategory">
         <mat-option [value]="0">Select Revenue Category</mat-option>
-        <mat-option [value]="category.id" *ngFor="let category of revenueCategories">
+        <mat-option [value]="category.title" *ngFor="let category of revenueCategories">
           {{category.title}}
         </mat-option>
     </mat-select> <br/> <br/>

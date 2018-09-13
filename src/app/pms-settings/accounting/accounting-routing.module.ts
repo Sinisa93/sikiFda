@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'fiscal-year',
     loadChildren: './fiscal-year/fiscal-year.module#FiscalYearModule'
   },
+  {
+    path: 'adjustment-reason-lists',
+    loadChildren: './adjustment-reason-lists/adjustment-reason-lists.module#AdjustmentReasonListsModule'
+  },
 ];
 
 @NgModule({

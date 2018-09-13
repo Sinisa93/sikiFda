@@ -108,10 +108,10 @@
             ></mat-checkbox>
         </span>
         <span *ngIf="column.propertyName=='category'">
-            {{row[column.propertyName]['title']}}
+            {{row['category']?.title}}
         </span>
         <span *ngIf="column.propertyName=='posPoint'">
-            {{row[column.propertyName]['title']}}
+            {{row['posPoint']?.title}}
         </span>
         <span *ngIf="column.propertyName=='id' ||
          column.propertyName=='name' || 

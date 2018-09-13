@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AccountingRoutingModule } from './accounting-routing.module';
 
+
 @NgModule({
   imports: [
     CommonModule,

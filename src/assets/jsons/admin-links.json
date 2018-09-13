@@ -267,7 +267,7 @@
             },
             {
                 "name": "Adjustment Reason List",
-                "path": ""
+                "path": "accounting/adjustment-reason-lists"
             },
             {
                 "name": "Revenue Account Labels",
