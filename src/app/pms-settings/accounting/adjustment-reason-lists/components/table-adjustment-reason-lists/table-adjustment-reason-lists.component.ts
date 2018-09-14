@@ -4,11 +4,12 @@ import { AdjustmentReasonListsDataService } from '../../../../services/adjustmen
 import { Location } from '../../../../../../../node_modules/@angular/common';
 import { FormBuilder } from '../../../../../../../node_modules/@angular/forms';
 import { Subscription } from '../../../../../../../node_modules/rxjs';
-import { MatTableDataSource, MatSort, MatPaginator } from '../../../../../../../node_modules/@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '../../../../../../../node_modules/@angular/material';
 import { AdjustmentReasonList } from '../../../../../interfaces/adjustment-reason-list';
 import { SelectionModel } from '../../../../../../../node_modules/@angular/cdk/collections';
 import { ArrayFunctions } from '../../../../../shared/functions/array-functions';
 import { trigger, state, style } from '../../../../../../../node_modules/@angular/animations';
+import { FormAdjustmentReasonListsComponent } from '../form-adjustment-reason-lists/form-adjustment-reason-lists.component';
 
 @Component({
   selector: 'app-table-adjustment-reason-lists',
@@ -30,7 +31,8 @@ export class TableAdjustmentReasonListsComponent implements OnInit, OnDestroy {
     private adjustmentReasonListsService:AdjustmentReasonListsService,
     private adjustmentReasonListsDataService:AdjustmentReasonListsDataService,
     private location:Location,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private adjustmentReasonListDialog:MatDialog,
   ) { }
 
   private subscription=new Subscription();
@@ -75,7 +77,7 @@ export class TableAdjustmentReasonListsComponent implements OnInit, OnDestroy {
   private displayedColumns:string[];
   private fixedColumns=['select','action'];
   private pageSizeOptions=[3,10,20,30,50,70,100,200];
-  private selectedStatus:string;
+  private selectedStatus:string = "0";
 
   private default : object={
     statusActive:0,
@@ -88,27 +90,38 @@ export class TableAdjustmentReasonListsComponent implements OnInit, OnDestroy {
     this.subscription.add(this.adjustmentReasonListsService.getAll().subscribe(
       (data:any[])=>{
         this.dataSource.data=data
-        // this.adjustmentReasonListsDataService.adjustmentReasonListsData.next(data)
+        console.log(data)
+        this.adjustmentReasonListsDataService.adjustmentReasonListsData.next(data)
         // this.selectedPoint="- All Pos Points -";
       }
 
+      
      
       
+    ));
+
+    this.subscription.add(this.adjustmentReasonListsDataService.adjustmentReasonListsData$.subscribe(
+      data=>{
+        this.dataSource.data=data;
+        console.log(data);
+      }
     ));
     this.getFilteredData(this.selectedStatus);
     this.dataSource.sort=this.sort;
     this.dataSource.paginator=this.paginator;
   }
 
-  getFilteredData(activStatus){
+  getFilteredData(activStatus, filteredData?){
+    console.log(activStatus);
     this.subscription.add(this.adjustmentReasonListsService.getAll().subscribe(
       data=>{
-        (checkData)=>{
+        var checkStatus = (checkData)=>{
           activStatus === undefined ? this.dataSource.data = checkData : (
             activStatus==0 ? this.filterDataBySelectedStatus(checkData, this.default['statusActive']):
           this.filterDataBySelectedStatus(checkData, this.default['statusDelete'])
           );
         }
+        filteredData==null?checkStatus(data):checkStatus(filteredData)
       }
     ));
  
@@ -163,20 +176,27 @@ export class TableAdjustmentReasonListsComponent implements OnInit, OnDestroy {
 
   onGroupDelete(){
     let selectedItems= this.selectedRows.selected;
-    this.dataSource.data=this.dataSource.data.filter(item=> !ArrayFunctions.inArray(item,selectedItems));
+    //this.dataSource.data=this.dataSource.data.filter(item=> !ArrayFunctions.inArray(item,selectedItems));
+    for(let i=0;i<this.dataSource.data.length;i++){
+      if(selectedItems[i]==this.dataSource.data[i]){
+        this.dataSource.data[i].status=false;
+      }
+    }
+
+    this.getFilteredData(this.selectedStatus,this.dataSource.data)
   }
 
-//   openAddEditDialog(id?){
+  openAddEditDialog(id?){
     
  
-//     let posPointsDialogRef=this.posProductsDialog.open(FormPosProductsComponent,{
-//       width:'60%',
-//       height:'90%',
-//       data:{
-//         id:id
-//       }
-//   });
-// }
+    let adjustmentReasonListDialogRef=this.adjustmentReasonListDialog.open(FormAdjustmentReasonListsComponent,{
+      width:'60%',
+      height:'50%',
+      data:{
+        id:id
+      }
+  });
+}
 
 
   goBack(){
