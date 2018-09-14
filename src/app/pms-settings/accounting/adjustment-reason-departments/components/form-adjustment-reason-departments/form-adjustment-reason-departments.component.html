@@ -1,3 +1,49 @@
-<p>
-  form-adjustment-reason-departments works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Adjustment Reason: Department Options - Add/Edit</h3>
+      <hr>
+    </div>
+</div>
+
+<form [formGroup]="formAdjustmentReasonDepartment" *ngIf="(_adjustmentReasonDepartments | async) ? _adjustmentReasonDepartments :true" >
+
+  <mat-dialog-content>
+
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        formControlName="code"
+        placeholder="Department Code"
+        />
+        <mat-error *ngIf="formAdjustmentReasonDepartment.get('code').hasError('required')">
+          <span style='color:red'>
+            Adjustment Department Code is required!
+          </span>
+        </mat-error>
+    </mat-form-field><br/>
+
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Adjustment Department "
+        />
+        <mat-error *ngIf="formAdjustmentReasonDepartment.get('title').hasError('required')">
+          <span style='color:red'>
+            Adjustment Department title is required!
+          </span>
+        </mat-error>
+    </mat-form-field><br/>
+
+    <input formControlName="id" type="hidden"/><br><br>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div class="button-row">
+        <button mat-raised-button class="btnCustomize" type="submit" (click)="addData()" [disabled]="!formAdjustmentReasonDepartment.valid ">Save Adjustment Department</button>
+        <button mat-raised-button class="btnCustomize" [mat-dialog-close]="true">Cancel</button>
+        
+    </div>
+</mat-dialog-actions>
+</form>

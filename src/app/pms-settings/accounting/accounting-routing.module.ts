@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'adjustment-reason-lists',
     loadChildren: './adjustment-reason-lists/adjustment-reason-lists.module#AdjustmentReasonListsModule'
   },
+  {
+    path: 'adjustment-reason-department',
+    loadChildren: './adjustment-reason-departments/adjustment-reason-departments.module#AdjustmentReasonDepartmentsModule'
+  },
 ];
 
 @NgModule({

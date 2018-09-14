@@ -24,7 +24,8 @@ export const apiPaths = {
             revenueAccountRules:"/revenue-account-rules.json",
             nightAuditSettings:"/night-audit-settings.json",
             fiscalYear:"/fiscal-year.json",
-            adjustmentReasonLists:"/adjustment-reason-list.json"
+            adjustmentReasonLists:"/adjustment-reason-list.json",
+            adjustmentReasonDepartments:"/adjustment-reason-departments.json"
         }
        
     }

@@ -1,0 +1,45 @@
+[
+    {
+        "id":1,
+        "code":"123FDA3",
+        "title":"Staff Error",
+        "status":true
+    },
+    {
+        "id":2,
+        "code":"TEST",
+        "title":"Staff Info",
+        "status":true
+    },
+    {
+        "id":3,
+        "code":"MASTER",
+        "title":"Staff warning",
+        "status":false
+    },
+    {
+        "id":4,
+        "code":"Successful operation",
+        "title":"Staff Success",
+        "status":true
+    },
+    {
+        "id":5,
+        "code":"DROP operation",
+        "title":"Staff drop",
+        "status":true
+    },
+    {
+        "id":6,
+        "code":"TESTING 2",
+        "title":"Staff testing",
+        "status":false
+    },
+    {
+        "id":7,
+        "code":"BASTER",
+        "title":"Error",
+        "status":true
+    }
+
+]

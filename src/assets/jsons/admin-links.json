@@ -270,9 +270,14 @@
                 "path": "accounting/adjustment-reason-lists"
             },
             {
+                "name": "Adjustment Reason Department",
+                "path": "accounting/adjustment-reason-department"
+            },
+            {
                 "name": "Revenue Account Labels",
                 "path": "accounting/revenue-account-labels"
             },
+
             {
                 "name": "Revenue Account Manager",
                 "path": ""
