@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'adjustment-reason-department',
     loadChildren: './adjustment-reason-departments/adjustment-reason-departments.module#AdjustmentReasonDepartmentsModule'
   },
+  {
+    path: 'revenue-accounting-manager',
+    loadChildren: './revenue-accounting-manager/revenue-accounting-manager.module#RevenueAccountingManagerModule'
+  }
 ];
 
 @NgModule({

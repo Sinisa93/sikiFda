@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3><a routerLink="/pms-settings">Control Panel</a> / Revenue Account Manager</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-3">
+      <form>
+          <mat-form-field>
+            <input 
+            matInput 
+            placeholder="Search" 
+            class="custom-field"
+            (keyup)="onSearch(filter.value)"
+            #filter
+            >
+          </mat-form-field>
+      </form>
+    </div>
+
+    <div class="col-xs-3 pull-right" id="showHideColumns">
+      <button
+         mat-raised-button 
+        (click)="openColumnList()">
+        SHOW / HIDE COLUMNS
+      </button>
+
+      <mat-selection-list
+      [@showList]="isVisibleColumnList">
+          <mat-list-option
+          *ngFor="let column of getEditableColumns()"
+          (click)="toggleColumn(column.propertyName, chbColumn.selected)"
+          #chbColumn
+          [selected]="displayedColumns.includes(column.propertyName)">
+            {{column.title}}
+          </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </div>
+
+  <mat-table 
+  [dataSource]="dataSource"
+  class="mat-elevation-z8 tablePosPoints"
+  matSort
+  [matSortDisableClear]="true">
+
+    <ng-container 
+      *ngFor="let column of columns" 
+      [matColumnDef]="column.propertyName">
+
+              <!--TH-->
+      <mat-header-cell 
+      *matHeaderCellDef
+      mat-sort-header 
+      [disabled]="isFixedColumn(column.propertyName)">
+         {{column.title}}
+      </mat-header-cell>
+
+           <!--TD-->
+     <mat-cell
+     class="tablePadding" 
+     *matCellDef="let row">
+          <!--value columns => text -->
+          <ng-container
+          *ngIf="!isFixedColumn(column.propertyName)">
+          <span *ngIf="column.propertyName=='name'|| column.propertyName=='type'">
+            {{row[column.propertyName]}}
+          </span>
+          <span *ngIf="column.propertyName=='revenueLabels'">
+            <form [formGroup]="formRevenueLabels">
+              <!-- <div formArrayName="revenueLabels"> -->
+            <mat-select>
+              <mat-option *ngFor="let pera of formRevenueLabels.get('revenueLabels').controls; let j=index">
+                {{pera[j].value.title}}
+              </mat-option>
+            </mat-select>
+          <!-- </div> -->
+          </form>
+          </span>
+          </ng-container>
+     </mat-cell>
+    </ng-container>
+
+    <mat-header-row 
+      *matHeaderRowDef="displayedColumns">
+    </mat-header-row>
+    <mat-row class="tableRow"
+      *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator
+  [pageSizeOptions]="pageSizeOptions">
+
+  </mat-paginator>
+
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <button mat-raised-button (click)="saveChange()" class="customBtn">Save Change</button>
+      <button mat-raised-button (click)="goBack()" class="customBtn">Cancel</button>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+[
+    {
+        "id":1,
+        "name":"Late Checkout",
+        "revenueLabels":{
+            "id":1,
+            "title":"Test"
+        },
+        "revenueCategories":{
+            "id":1,
+            "title":"Test category"
+        },
+        "type":"Add-on"
+    },
+    {
+        "id":2,
+        "name":"Late Checkout",
+        "revenueLabels":{
+            "id":2,
+            "title":"Super user"
+        },
+        "revenueCategories":{
+            "id":2,
+            "title":"Super category"
+        },
+        "type":"Add-on"
+    },
+    {
+        "id":3,
+        "name":"Testing product",
+        "revenueLabels":{
+            "id":3,
+            "title":"Test user"
+        },
+        "revenueCategories":{
+            "id":3,
+            "title":"Rich category"
+        },
+        "type":"POS Item"
+    },
+    {
+        "id":4,
+        "name":"Testing product store",
+        "revenueLabels":{
+            "id":4,
+            "title":"Customer"
+        },
+        "revenueCategories":{
+            "id":4,
+            "title":"Store"
+        },
+        "type":"Rate"
+    },
+    {
+        "id":5,
+        "name":"BAR",
+        "revenueLabels":{
+            "id":5,
+            "title":"Client"
+        },
+        "revenueCategories":{
+            "id":5,
+            "title":"Moderator"
+        },
+        "type":"Rate"
+    }
+]
